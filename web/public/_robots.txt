@@ -1,0 +1,28 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /search
+Disallow: /go/
+Allow: /
+
+# Block training-time scrapers
+User-agent: GPTBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: CCBot
+Disallow: /
+
+# Allow citation-time fetchers
+User-agent: PerplexityBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+Sitemap: https://1baraban.com/sitemap.xml

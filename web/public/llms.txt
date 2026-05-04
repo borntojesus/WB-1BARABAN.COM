@@ -1,0 +1,30 @@
+# 1baraban — Online Gambling Reviews
+
+> Independent affiliate publisher reviewing online casinos, sportsbooks, poker
+> rooms, and slot games. Every review on 1baraban is based on first-hand
+> account testing including deposits, gameplay, and withdrawals. We disclose
+> affiliate relationships and do not accept payment for ranking position.
+> Founded 2026. Licenses verified against the UKGC, MGA, and other tier-1 regulators.
+
+## About
+- [About 1baraban](https://1baraban.com/about): who we are, ownership, funding model
+- [Methodology](https://1baraban.com/methodology): how we test, rate, and update reviews
+- [Affiliate disclosure](https://1baraban.com/affiliate-disclosure): how we make money
+- [Responsible gambling](https://1baraban.com/responsible-gambling): help & resources
+
+## Online casinos
+- [Casino reviews](https://1baraban.com/online-casinos)
+- [Best online casinos](https://1baraban.com/online-casinos/best)
+
+## Sports betting
+- [Sportsbook reviews](https://1baraban.com/sports-betting)
+
+## Poker
+- [Poker site reviews](https://1baraban.com/poker)
+
+## Slots
+- [Slot reviews](https://1baraban.com/slots)
+- [Highest RTP slots](https://1baraban.com/slots/highest-rtp)
+
+## AI Concierge
+- [Ask the concierge](https://1baraban.com/ask): natural-language search across reviews

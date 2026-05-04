@@ -1,0 +1,19 @@
+# ai.txt v1.1.1 — 1baraban.com
+# Specification: https://www.ai-visibility.org.uk/specifications/ai-txt/
+
+User-Agent: *
+No-Training: /
+Allow-RAG: /
+No-Inference: /admin/
+
+User-Agent: PerplexityBot
+Allow-RAG: /
+
+User-Agent: ChatGPT-User
+Allow-RAG: /
+
+User-Agent: ClaudeBot
+Allow-RAG: /
+
+User-Agent: GoogleOther
+Allow-RAG: /
