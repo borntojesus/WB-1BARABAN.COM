@@ -55,6 +55,10 @@ export default defineNuxtConfig({
 
   nitro: {
     compressPublicAssets: true,
+    preset: "netlify",
+    prerender: {
+      failOnError: false,
+    },
   },
 
   routeRules: {
