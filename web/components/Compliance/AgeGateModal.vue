@@ -21,10 +21,7 @@ function handleConfirm() {
       <div v-if="open" class="age-overlay" role="dialog" aria-modal="true" aria-labelledby="age-title">
         <div class="age-card">
           <div class="age-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="24" cy="24" r="20" />
-              <path d="M16 22h4v12M28 22c0-2 1-3 3-3s4 1 4 3-2 3-4 4-3 3-3 5h7" />
-            </svg>
+            <span class="age-18" aria-hidden="true">18+</span>
           </div>
           <h2 id="age-title" class="age-title">Please confirm you are 18+</h2>
           <p class="age-desc">
@@ -133,4 +130,5 @@ function handleConfirm() {
 .age-modal-enter-from, .age-modal-leave-to { opacity: 0; }
 .age-modal-enter-from .age-card { transform: scale(0.96); }
 .age-modal-leave-to .age-card { transform: scale(0.96); }
+.age-18 { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--accent-primary); }
 </style>

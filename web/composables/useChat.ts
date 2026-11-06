@@ -75,7 +75,9 @@ function operatorAnswer(op: Operator, q: string): ChatMessage {
   if (/licen|legal|uk|gb|britain|regulat|safe/.test(q)) {
     text = `${op.name}: ${gbStatusLabel[op.gbStatus]}.`;
     if (lic) {
-      text += ` ${lic.regulator}${lic.number ? `, account ${lic.number}` : ""}${lic.holder ? `, held by ${lic.holder}` : ""}. Status: ${lic.status}. Source: ${lic.source.url}.`;
+      const end = (t: string) => t.replace(/\.+$/, "");
+      const num = lic.number ? `, ${lic.regulator === "UK Gambling Commission" ? "account" : "licence"} ${lic.number}` : "";
+      text += ` ${lic.regulator}${num}${lic.holder ? `, held by ${end(lic.holder)}` : ""}. Status: ${end(lic.status)}. Source: ${lic.source.label}.`;
     }
     text += ` Checked ${op.lastChecked}.`;
   } else if (/own/.test(q)) {
