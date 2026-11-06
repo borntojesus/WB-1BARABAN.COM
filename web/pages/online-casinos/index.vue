@@ -1,42 +1,38 @@
 <script setup lang="ts">
-import { operatorsByVertical } from '~/data/operators'
+import { operators as all, CHECKED } from '~/data/operators'
 
-const operators = operatorsByVertical('casino')
-const avgPayout = (operators.reduce((s, o) => s + o.payoutSpeedHours, 0) / operators.length).toFixed(0)
-const tier1Count = operators.filter(o => o.licenses.some(l => l.tier === 'tier1')).length
+const operators = all.filter(o => o.verticals.value?.includes('casino'))
+  .sort((a, b) => Number(b.gbStatus === 'licensed') - Number(a.gbStatus === 'licensed'))
 
 useSeoMeta({
-  title: 'Best online casinos · independent reviews',
-  description: 'Top online casinos ranked by Trust Index. Verified licenses, real payout speeds, honest bonus math. EU and global. Methodology v2.4.',
-  ogTitle: 'Best online casinos — 1baraban Trust Index',
-  ogDescription: `${operators.length} casinos reviewed. ${tier1Count} tier-1 licensed. Average withdrawal time: ${avgPayout}h.`,
+  title: 'Online casino operator profiles: licence status and facts',
+  description: `Online casino operator profiles with UK licence status, owner and regulatory actions. Sourced and dated, last checked ${CHECKED}. No scores.`,
+  ogTitle: 'Online casino operator profiles: licence status and facts',
+  ogDescription: `Online casino operator profiles with UK licence status, owner and regulatory actions. Sourced and dated, last checked ${CHECKED}. No scores.`,
 })
-
+useHead({ link: [{ rel: 'canonical', href: 'https://1baraban.com/online-casinos' }] })
 useSchemaOrg([
-  defineWebPage({ name: 'Best online casinos' }),
-  defineItemList({
-    itemListElement: operators.map((op, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      url: `https://1baraban.com/reviews/${op.slug}`,
-      name: op.name,
-    })),
-  }),
+  defineWebPage({ name: 'Online casino operator profiles: licence status and facts' }),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://1baraban.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Online casinos', item: 'https://1baraban.com/online-casinos' },
+    ],
+  },
+  {
+    '@type': 'ItemList',
+    itemListElement: operators.map((o, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://1baraban.com/reviews/${o.slug}`, name: o.name })),
+  },
 ])
 </script>
 
 <template>
   <VerticalHub
-    vertical="casino"
-    title="Online casinos, ranked honestly."
-    tagline="From crypto-native challengers to MGA-licensed legacy brands — scored on what actually matters: license tier, banking speed, bonus value, and complaint volume."
-    intro="We review online casinos against a published 6-pillar methodology. Every operator on this page has been verified against their licensing register, tested for withdrawal speed, and analysed for bonus terms (real wagering math, not headline numbers). Ratings update quarterly. Operators don't pay to appear here, and they can't pay to move up — affiliate relationships are disclosed on every review."
+    eyebrow="Online casinos"
+    title="Online casino profiles"
+    intro="Fact profiles of online casino operators, GB-licensed first. Every fact has a source and a check date. We do not score or rank casinos because we have not tested them."
     :operators="operators"
-    :facts="[
-      { label: 'operators reviewed', value: String(operators.length) },
-      { label: 'tier-1 licensed', value: String(tier1Count) },
-      { label: 'avg payout time', value: `${avgPayout}h` },
-      { label: 'methodology', value: 'v2.4' },
-    ]"
+    empty-text=""
   />
 </template>

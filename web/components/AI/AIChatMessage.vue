@@ -18,7 +18,7 @@ const html = computed(() => {
 <template>
   <div class="msg" :class="`role-${message.role}`">
     <div v-if="message.role === 'assistant'" class="msg-avatar" aria-hidden="true">
-      <BrandBrandMark size="sm" :with-wordmark="false" />
+      <BrandMark size="sm" :with-wordmark="false" />
     </div>
     <div class="msg-bubble">
       <p class="msg-content"><span v-html="html" /></p>

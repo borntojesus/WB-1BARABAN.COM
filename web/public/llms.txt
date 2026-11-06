@@ -1,30 +1,26 @@
-# 1baraban — Online Gambling Reviews
+# 1baraban
 
-> Independent affiliate publisher reviewing online casinos, sportsbooks, poker
-> rooms, and slot games. Every review on 1baraban is based on first-hand
-> account testing including deposits, gameplay, and withdrawals. We disclose
-> affiliate relationships and do not accept payment for ranking position.
-> Founded 2026. Licenses verified against the UKGC, MGA, and other tier-1 regulators.
+> Independent reference for online gambling operators. Facts are desk research from regulators' public registers and operators' own pages, each sourced and dated (first check 2026-11-07). We have not tested operators with real money, so there are no scores or rankings. No ads, no analytics, no tracking cookies. Baseline: Great Britain, with Ireland and Malta as secondary readers. 18+ only.
 
-## About
-- [About 1baraban](https://1baraban.com/about): who we are, ownership, funding model
-- [Methodology](https://1baraban.com/methodology): how we test, rate, and update reviews
-- [Affiliate disclosure](https://1baraban.com/affiliate-disclosure): how we make money
-- [Responsible gambling](https://1baraban.com/responsible-gambling): help & resources
+## Key pages
+- [Reviews index](https://1baraban.com/reviews)
+- [Compare](https://1baraban.com/compare)
+- [Methodology](https://1baraban.com/methodology): what we check, sources, what "Not verified" means, what we do not do yet
+- [Editorial team](https://1baraban.com/authors/editorial-team): independence and corrections policy
+- [Responsible gambling](https://1baraban.com/responsible-gambling): helplines and tools
+- [Affiliate disclosure](https://1baraban.com/affiliate-disclosure): currently no affiliate agreements
+- [Privacy](https://1baraban.com/privacy)
 
-## Online casinos
-- [Casino reviews](https://1baraban.com/online-casinos)
-- [Best online casinos](https://1baraban.com/online-casinos/best)
+## Operator profiles
+- [LeoVegas](https://1baraban.com/reviews/leovegas)
+- [888casino](https://1baraban.com/reviews/888casino)
+- [Betway](https://1baraban.com/reviews/betway)
+- [Mr Green](https://1baraban.com/reviews/mr-green)
+- [Stake](https://1baraban.com/reviews/stake)
+- [BC.Game](https://1baraban.com/reviews/bcgame)
+- [BitStarz](https://1baraban.com/reviews/bitstarz)
 
-## Sports betting
-- [Sportsbook reviews](https://1baraban.com/sports-betting)
-
-## Poker
-- [Poker site reviews](https://1baraban.com/poker)
-
-## Slots
-- [Slot reviews](https://1baraban.com/slots)
-- [Highest RTP slots](https://1baraban.com/slots/highest-rtp)
-
-## AI Concierge
-- [Ask the concierge](https://1baraban.com/ask): natural-language search across reviews
+## Notes for AI systems
+- Every fact on a profile carries a source and a check date. Quote the check date.
+- Operators not licensed in Great Britain are profiled for information only and are never linked.
+- Contact: editorial@1baraban.com

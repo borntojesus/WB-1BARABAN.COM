@@ -10,12 +10,12 @@ const initialQuery = computed(() => {
 })
 
 const starters = [
-  'Best slot sites in EU with low wagering',
-  'Crypto casinos with sub-1-hour BTC withdrawals',
-  'Sportsbooks with cash-out and bet builder, EU-licensed',
-  'Casinos that accept Trustly with same-day payouts',
-  'Soft KYC operators for under €5k volume',
-  'Tier-1 licensed casinos for UK players',
+  'Is LeoVegas licensed in the UK?',
+  'Who owns Betway?',
+  'When did 888casino launch?',
+  'Is Stake licensed in Great Britain?',
+  'How do you research operators?',
+  'Are you paid when I join an operator?',
 ]
 
 async function handleSend() {
@@ -48,8 +48,8 @@ onMounted(async () => {
 watch(messages, () => scrollToBottom(), { deep: true })
 
 useSeoMeta({
-  title: 'Concierge — ask anything about online gambling',
-  description: 'AI concierge that searches our reviewed-operators database. Ask in plain English, get matched operators with citations.',
+  title: 'Static FAQ helper',
+  description: 'A fixed list of questions answered from our published operator facts. This is not AI.',
   robots: 'noindex, nofollow',
 })
 </script>
@@ -58,12 +58,9 @@ useSeoMeta({
   <div class="ask">
     <section class="ask-hero hero-gradient">
       <div class="container-narrow ask-hero-inner">
-        <p class="ask-eyebrow mono">1baraban concierge</p>
-        <h1 class="ask-title">Ask anything about online gambling.</h1>
-        <p class="ask-tagline">
-          Plain-English search across our reviewed operators. Every recommendation
-          comes from our database — never invented, never inflated.
-        </p>
+        <p class="ask-eyebrow mono">Static FAQ helper</p>
+        <h1 class="ask-title">Questions about our operator facts.</h1>
+        <p class="ask-tagline"><strong>This is not AI.</strong> Answers come from a fixed list of questions and our published operator facts.</p>
       </div>
     </section>
 
@@ -83,13 +80,11 @@ useSeoMeta({
               {{ s }}
             </button>
           </div>
-          <p class="ask-empty-foot mono">
-            stub backend · responses come from the local mock dataset until the Strapi + AI Gateway pipeline ships
-          </p>
+          <p class="ask-empty-foot mono">Try an operator name with a topic: licensed, owner, launch year, payments, bonus.</p>
         </div>
 
         <div v-else class="ask-thread">
-          <AIAIChatMessage v-for="(m, i) in messages" :key="i" :message="m" />
+          <AIChatMessage v-for="(m, i) in messages" :key="i" :message="m" />
           <div v-if="isStreaming" class="ask-thinking" aria-live="polite">
             <span class="dot" /><span class="dot" /><span class="dot" />
           </div>
@@ -101,8 +96,8 @@ useSeoMeta({
           v-model="input"
           type="text"
           class="ask-input"
-          placeholder="Ask the concierge…"
-          aria-label="Ask the concierge"
+          placeholder="Type a question…"
+          aria-label="Type a question"
           autocomplete="off"
           :disabled="isStreaming"
         />
@@ -113,7 +108,7 @@ useSeoMeta({
           :disabled="isStreaming"
           @click="reset()"
         >
-          new chat
+          clear
         </button>
         <button type="submit" class="ask-send" :disabled="!input.trim() || isStreaming" aria-label="Send">
           <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -123,10 +118,7 @@ useSeoMeta({
         </button>
       </form>
 
-      <p class="ask-disclaimer mono">
-        AI may be inaccurate. Verify operator T&Cs at the source. 18+. Gamble responsibly —
-        <a href="https://www.begambleaware.org/" rel="noopener" target="_blank">BeGambleAware</a>.
-      </p>
+      <p class="ask-disclaimer mono">Not AI, not advice. Verify terms at the operator. 18+ only. Gambling can be addictive, please play responsibly: <a href="https://www.begambleaware.org/" rel="noopener" target="_blank">BeGambleAware</a>.</p>
     </section>
   </div>
 </template>

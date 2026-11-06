@@ -26,19 +26,20 @@ function handleConfirm() {
               <path d="M16 22h4v12M28 22c0-2 1-3 3-3s4 1 4 3-2 3-4 4-3 3-3 5h7" />
             </svg>
           </div>
-          <h2 id="age-title" class="age-title">You must be 18+ to enter</h2>
+          <h2 id="age-title" class="age-title">Please confirm you are 18+</h2>
           <p class="age-desc">
-            1baraban reviews real-money gambling operators. Some jurisdictions require 21+. By entering, you confirm you meet the legal age in your country and that gambling is permitted in your location.
+            This site is for adults only. By continuing you confirm you are 18 or over. Your browser stores this choice locally; nothing is sent to us.
+            Need help? See <NuxtLink to="/responsible-gambling" @click="open = false">responsible gambling</NuxtLink>.
           </p>
           <div class="age-actions">
             <button class="age-btn age-confirm" type="button" @click="handleConfirm">
               I confirm I am 18+
             </button>
-            <a class="age-btn age-leave" href="https://www.google.com/search?q=responsible+gambling+help" rel="noopener">
+            <a class="age-btn age-leave" href="https://www.begambleaware.org/" rel="noopener">
               Leave site
             </a>
           </div>
-          <p class="age-foot mono">18+ · Gamble responsibly · BeGambleAware.org</p>
+          <p class="age-foot mono">Gambling can be addictive, please play responsibly. BeGambleAware.org</p>
         </div>
       </div>
     </Transition>

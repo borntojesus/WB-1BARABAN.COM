@@ -1,19 +1,9 @@
-# ai.txt v1.1.1 — 1baraban.com
-# Specification: https://www.ai-visibility.org.uk/specifications/ai-txt/
-
+# ai.txt for 1baraban.com
+# Content is original editorial desk research. Citation with a link to the source page is welcome.
 User-Agent: *
-No-Training: /
-Allow-RAG: /
-No-Inference: /admin/
+Allow: /
+Disallow: /ask
 
-User-Agent: PerplexityBot
-Allow-RAG: /
-
-User-Agent: ChatGPT-User
-Allow-RAG: /
-
-User-Agent: ClaudeBot
-Allow-RAG: /
-
-User-Agent: GoogleOther
-Allow-RAG: /
+# About this site: https://1baraban.com/llms.txt
+# Methodology: https://1baraban.com/methodology
+# Contact: editorial@1baraban.com

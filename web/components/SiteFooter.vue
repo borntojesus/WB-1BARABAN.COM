@@ -7,13 +7,20 @@ const year = new Date().getFullYear()
     <div class="container-page footer-inner">
       <div class="footer-grid">
         <div class="footer-brand">
-          <BrandBrandMark size="md" />
-          <p class="footer-tagline">Independent iGaming reviews. Public methodology. AI concierge.</p>
-          <p class="footer-rg-tagline mono">18+ · Gamble responsibly · BeGambleAware.org</p>
+          <BrandMark size="md" />
+          <p class="footer-tagline">Sourced and dated facts about online gambling operators. No ads. Independent.</p>
+          <p class="footer-rg-tagline mono">18+ only. Gambling can be addictive, please play responsibly.</p>
+          <p class="footer-rg-tagline mono">
+            <a href="https://www.begambleaware.org/" rel="noopener" target="_blank">BeGambleAware.org</a>
+            ·
+            <a href="https://www.gamstop.co.uk/" rel="noopener" target="_blank">GAMSTOP</a>
+          </p>
         </div>
 
         <div class="footer-col">
-          <h3 class="col-title">Verticals</h3>
+          <h3 class="col-title">Browse</h3>
+          <NuxtLink to="/reviews" class="footer-link">Reviews</NuxtLink>
+          <NuxtLink to="/compare" class="footer-link">Compare</NuxtLink>
           <NuxtLink to="/online-casinos" class="footer-link">Online casinos</NuxtLink>
           <NuxtLink to="/sports-betting" class="footer-link">Sports betting</NuxtLink>
           <NuxtLink to="/poker" class="footer-link">Poker</NuxtLink>
@@ -23,25 +30,27 @@ const year = new Date().getFullYear()
         <div class="footer-col">
           <h3 class="col-title">Trust</h3>
           <NuxtLink to="/methodology" class="footer-link">Methodology</NuxtLink>
-          <NuxtLink to="/about" class="footer-link">About 1baraban</NuxtLink>
+          <NuxtLink to="/authors/editorial-team" class="footer-link">Editorial team</NuxtLink>
+          <NuxtLink to="/about" class="footer-link">About</NuxtLink>
           <NuxtLink to="/affiliate-disclosure" class="footer-link">Affiliate disclosure</NuxtLink>
           <NuxtLink to="/responsible-gambling" class="footer-link">Responsible gambling</NuxtLink>
+          <NuxtLink to="/privacy" class="footer-link">Privacy</NuxtLink>
         </div>
 
         <div class="footer-col">
-          <h3 class="col-title">Resources</h3>
+          <h3 class="col-title">Help</h3>
           <a href="https://www.begambleaware.org/" rel="noopener" target="_blank" class="footer-link">BeGambleAware</a>
+          <a href="https://www.gamstop.co.uk/" rel="noopener" target="_blank" class="footer-link">GAMSTOP</a>
           <a href="https://www.gamcare.org.uk/" rel="noopener" target="_blank" class="footer-link">GamCare</a>
-          <a href="https://www.gamblingcommission.gov.uk/" rel="noopener" target="_blank" class="footer-link">UKGC</a>
-          <a href="https://www.mga.org.mt/" rel="noopener" target="_blank" class="footer-link">MGA</a>
+          <a href="https://www.gamblingcommission.gov.uk/" rel="noopener" target="_blank" class="footer-link">UK Gambling Commission</a>
         </div>
       </div>
 
-      <ResponsibleGamblingBlock />
+      <ComplianceResponsibleGamblingBlock />
 
       <div class="footer-bottom">
         <span class="footer-copy mono">© {{ year }} 1baraban</span>
-        <span class="footer-meta mono">v0.1.0 · methodology v2.4 · last updated {{ new Date().toISOString().slice(0, 10) }}</span>
+        <span class="footer-meta mono">1baraban Editorial Team · editorial@1baraban.com</span>
       </div>
     </div>
   </footer>
@@ -80,6 +89,7 @@ const year = new Date().getFullYear()
   font-size: 12px;
   letter-spacing: 0.02em;
 }
+.footer-rg-tagline a { text-decoration: underline; }
 .footer-col {
   display: flex;
   flex-direction: column;

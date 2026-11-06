@@ -1,41 +1,38 @@
 <script setup lang="ts">
-import { operatorsByVertical } from '~/data/operators'
+import { operators as all, CHECKED } from '~/data/operators'
 
-const operators = operatorsByVertical('slot')
-const cryptoCount = operators.filter(o => o.cryptoSupported).length
+const operators = all.filter(o => o.verticals.value?.includes('casino'))
+  .sort((a, b) => Number(b.gbStatus === 'licensed') - Number(a.gbStatus === 'licensed'))
 
 useSeoMeta({
-  title: 'Best slot sites · independent reviews',
-  description: 'Top slot sites ranked by Trust Index. Provider depth, RTP transparency, free-spin terms — slot site reviews focused on long-run player value.',
-  ogTitle: 'Best slot sites — 1baraban Trust Index',
-  ogDescription: 'Provider-depth and RTP-transparency-aware slot site reviews. Free-spin terms decoded.',
+  title: 'Slots operators: online casino profiles with licence facts',
+  description: `Online slots are offered by online casinos. These casino operator profiles show UK licence status, owner and sources, last checked ${CHECKED}.`,
+  ogTitle: 'Slots operators: online casino profiles with licence facts',
+  ogDescription: `Online slots are offered by online casinos. These casino operator profiles show UK licence status, owner and sources, last checked ${CHECKED}.`,
 })
-
+useHead({ link: [{ rel: 'canonical', href: 'https://1baraban.com/slots' }] })
 useSchemaOrg([
-  defineWebPage({ name: 'Best slot sites' }),
-  defineItemList({
-    itemListElement: operators.map((op, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      url: `https://1baraban.com/reviews/${op.slug}`,
-      name: op.name,
-    })),
-  }),
+  defineWebPage({ name: 'Slots operators: online casino profiles with licence facts' }),
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://1baraban.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Slots', item: 'https://1baraban.com/slots' },
+    ],
+  },
+  {
+    '@type': 'ItemList',
+    itemListElement: operators.map((o, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://1baraban.com/reviews/${o.slug}`, name: o.name })),
+  },
 ])
 </script>
 
 <template>
   <VerticalHub
-    vertical="slot"
-    title="Slot sites, ranked beyond RTP."
-    tagline="Provider depth, RTP transparency, free-spin terms that don't quietly lock your funds — slot site reviews where the small print gets read."
-    intro="Most slot site reviews chase the highest free-spin number on the welcome banner. We don't. Our scoring weights provider depth (Pragmatic, NetEnt, Hacksaw, Nolimit, Push), RTP transparency (does the operator publish per-game RTP?), bonus terms (wagering, max-bet, eligible-game restrictions), and the speed at which winnings actually arrive. Bonuses are scored on real value after wagering — not headline value."
+    eyebrow="Slots"
+    title="Slots operators"
+    intro="Slots are a game type inside online casinos, so this page lists the casino operators we have profiled. We do not rate individual slot games or publish RTP claims. GB-licensed operators come first."
     :operators="operators"
-    :facts="[
-      { label: 'sites reviewed', value: String(operators.length) },
-      { label: 'crypto-supporting', value: String(cryptoCount) },
-      { label: 'methodology', value: 'v2.4' },
-      { label: 'last updated', value: '2026-04-30' },
-    ]"
+    empty-text=""
   />
 </template>

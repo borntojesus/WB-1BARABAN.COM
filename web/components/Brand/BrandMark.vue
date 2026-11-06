@@ -7,7 +7,7 @@ withDefaults(defineProps<Props>(), { size: 'md', withWordmark: true })
 </script>
 
 <template>
-  <NuxtLink to="/" class="brand-mark" :class="`size-${size}`" aria-label="1baraban — home">
+  <NuxtLink to="/" class="brand-mark" :class="`size-${size}`" aria-label="1baraban home">
     <span class="glyph" aria-hidden="true">
       <!-- abstract reel-arc glyph -->
       <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

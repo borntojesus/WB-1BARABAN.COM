@@ -1,153 +1,63 @@
 <script setup lang="ts">
-import type { Vertical, Operator } from '~/data/operators'
+import type { Operator } from '~/data/operators'
 
-type Props = {
-  vertical: Vertical
+const props = defineProps<{
+  eyebrow: string
   title: string
-  tagline: string
   intro: string
   operators: Operator[]
-  heroImage?: string
-  facts?: { label: string; value: string }[]
-}
-defineProps<Props>()
+  emptyText?: string
+}>()
+const licensed = computed(() => props.operators.filter(o => o.gbStatus === 'licensed'))
+const other = computed(() => props.operators.filter(o => o.gbStatus !== 'licensed'))
 </script>
 
 <template>
-  <article class="vertical-hub">
-    <section class="vh-hero hero-gradient">
-      <div class="container-page vh-hero-inner">
-        <p class="vh-eyebrow mono">{{ vertical }}</p>
-        <h1 class="vh-title">{{ title }}</h1>
-        <p class="vh-tagline">{{ tagline }}</p>
-      </div>
-      <div v-if="heroImage" class="vh-hero-bg" :style="{ backgroundImage: `url(${heroImage})` }" />
+  <article class="vh">
+    <header class="container-page vh-head">
+      <p class="vh-eyebrow mono">{{ eyebrow }}</p>
+      <h1 class="vh-title">{{ title }}</h1>
+      <p class="vh-intro">{{ intro }}</p>
+      <slot />
+    </header>
+
+    <section v-if="operators.length === 0" class="container-page vh-sec">
+      <p class="vh-empty">{{ emptyText }}</p>
+      <p><NuxtLink to="/reviews">See all operator profiles</NuxtLink></p>
     </section>
 
-    <section class="container-page vh-facts" v-if="facts?.length">
-      <div v-for="f in facts" :key="f.label" class="vh-fact">
-        <p class="vh-fact-label mono">{{ f.label }}</p>
-        <p class="vh-fact-value">{{ f.value }}</p>
-      </div>
+    <section v-if="licensed.length" class="container-page vh-sec">
+      <h2>Licensed in Great Britain</h2>
+      <div class="vh-grid"><OperatorCard v-for="o in licensed" :key="o.slug" :operator="o" /></div>
     </section>
 
-    <section class="container-page vh-intro">
-      <p>{{ intro }}</p>
+    <section v-if="other.length" class="container-page vh-sec">
+      <h2>Not available in Great Britain</h2>
+      <p class="vh-sub">Information only. These operators are not licensed for GB players and we do not link to them.</p>
+      <div class="vh-grid"><OperatorCard v-for="o in other" :key="o.slug" :operator="o" /></div>
     </section>
 
-    <section class="container-page vh-list">
-      <div class="vh-list-head">
-        <h2 class="vh-list-title">Top {{ vertical }} operators by Trust Index</h2>
-        <p class="vh-list-sub mono">methodology v2.4 · sorted by editorial score</p>
-      </div>
-      <div class="vh-grid">
-        <OperatorCard v-for="op in operators" :key="op.slug" :operator="op" />
-      </div>
-    </section>
-
-    <section class="container-page vh-rg">
-      <ResponsibleGamblingBlock variant="compact" />
+    <section class="container-page vh-sec vh-links">
+      <p>
+        <NuxtLink to="/compare">Compare all operators</NuxtLink> ·
+        <NuxtLink to="/reviews">All profiles</NuxtLink> ·
+        <NuxtLink to="/methodology">How we check facts</NuxtLink> ·
+        <NuxtLink to="/responsible-gambling">Responsible gambling</NuxtLink>
+      </p>
     </section>
   </article>
 </template>
 
 <style scoped>
-.vh-hero {
-  position: relative;
-  padding: var(--space-20) 0 var(--space-16);
-  overflow: hidden;
-}
-.vh-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.35;
-  mix-blend-mode: screen;
-  z-index: 0;
-}
-.vh-hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
-}
-.vh-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent-primary);
-  margin: 0 0 var(--space-3);
-}
-.vh-title {
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  margin-bottom: var(--space-4);
-}
-.vh-tagline {
-  color: var(--text-secondary);
-  font-size: var(--text-xl);
-  line-height: 1.55;
-  max-width: 560px;
-}
-.vh-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-2);
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-8);
-  border-bottom: 1px solid var(--border);
-}
-.vh-fact {
-  padding: var(--space-3);
-}
-.vh-fact-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-tertiary);
-  margin: 0 0 4px;
-}
-.vh-fact-value {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-}
-.vh-intro {
-  padding-top: var(--space-12);
-  padding-bottom: var(--space-8);
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-.vh-list { padding-bottom: var(--space-16); }
-.vh-list-head {
-  margin-bottom: var(--space-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-.vh-list-title {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  letter-spacing: -0.025em;
-}
-.vh-list-sub {
-  font-size: 12px;
-  color: var(--text-tertiary);
-}
-.vh-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-}
-@media (min-width: 768px) {
-  .vh-grid { grid-template-columns: repeat(2, 1fr); }
-}
-.vh-rg { padding-bottom: var(--space-16); }
+.vh-head { padding-top: 48px; padding-bottom: 16px; max-width: 800px; }
+.vh-eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-primary); margin: 0 0 8px; }
+.vh-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 16px; }
+.vh-intro { font-size: 18px; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+.vh-sec { padding-top: 24px; padding-bottom: 24px; }
+.vh-sec h2 { font-size: 24px; margin: 0 0 8px; }
+.vh-sub { color: var(--text-secondary); margin: 0 0 16px; }
+.vh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 16px; }
+.vh-empty { font-size: 17px; }
+.vh-links a { text-decoration: underline; color: var(--accent-primary); }
+.vh-links { padding-bottom: 64px; }
 </style>

@@ -987,3 +987,15 @@ export const gbStatusLabel: Record<GbStatus, string> = {
 export function findOperator(slug: string) {
   return operators.find((o) => o.slug === slug);
 }
+
+/** Domains of operators not licensed in GB: never rendered as clickable links. */
+export const noLinkDomains = notInGb.map((o) => o.domain.replace(/^www\./, ""));
+
+export function isNoLinkUrl(url: string) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    return noLinkDomains.some((d) => host === d || host.endsWith(`.${d}`));
+  } catch {
+    return false;
+  }
+}
