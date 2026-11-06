@@ -1,464 +1,989 @@
-// Mock operator data for MVP frontend.
-// Replaced by Strapi API when backend ships.
+// Operator facts for 1baraban.com.
+// Every fact carries its source and the date it was checked. A null value means
+// we could not verify it on the check date; the page must say so, never guess.
+// Compliance baseline: Great Britain (see docs/PLAN.md). Only operators with an
+// active UK Gambling Commission licence get an outbound /go/<slug> link.
 
-export type Vertical = "casino" | "sportsbook" | "poker" | "slot";
+export type Vertical = "casino" | "sportsbook" | "bingo" | "poker";
 
-export type SubScore = {
+export type Source = {
   label: string;
-  score: number;
-  weight: number;
-  count?: number;
+  url: string;
+  /** primary = regulator register or the operator's own pages */
+  primary: boolean;
 };
 
-export type Bonus = {
-  type: "welcome" | "no_deposit" | "free_spins" | "reload" | "cashback";
-  headline: string;
-  bonusEur?: number;
-  freeSpins?: number;
-  wagering?: number;
-  minDeposit?: number;
-  expiryDays?: number;
-  termsUrl?: string;
+export type Fact<T> = {
+  value: T | null;
+  sources: Source[];
+  checked: string;
+  note?: string;
 };
+
+export type Licence = {
+  regulator: string;
+  number: string | null;
+  holder: string | null;
+  status: string;
+  verifyUrl: string | null;
+  source: Source;
+};
+
+export type RegulatoryAction = {
+  date: string;
+  regulator: string;
+  amount: string;
+  summary: string;
+  source: Source;
+};
+
+export type GbStatus = "licensed" | "surrendered" | "not-licensed";
 
 export type Operator = {
   slug: string;
   name: string;
-  legalName?: string;
-  founded: number;
-  parent?: string;
-  websiteUrl: string;
-  affiliateUrl: string;
-  logo?: string;
-  tagline: string;
-  tldr: string;
-  score: number;
-  scorePrev?: number;
-  subScores: SubScore[];
-  verticals: Vertical[];
-  licenses: {
-    authority: string;
-    number?: string;
-    registerUrl: string;
-    tier: "tier1" | "tier2" | "offshore";
-  }[];
-  acceptedCountries: string[];
-  paymentMethods: string[];
-  cryptoSupported: boolean;
-  payoutSpeedHours: number;
-  minDepositEur: number;
-  kycLevel: "none" | "soft" | "full";
-  liveChat247: boolean;
-  bonuses: Bonus[];
-  pros: string[];
-  cons: string[];
-  tags: string[];
-  lastVerified: string;
-  nextReviewDue: string;
-  reviewer: {
-    name: string;
-    initials: string;
-    credentials: string;
-    href: string;
-  };
+  /** site address shown to readers (GB domain for GB-licensed brands) */
+  domain: string;
+  gbStatus: GbStatus;
+  /** plain-language summary written by the editorial team from the facts below */
+  summary: string;
+  verdict: string;
+  legalName: Fact<string>;
+  registration: Fact<string>;
+  owner: Fact<string>;
+  launchYear: Fact<number>;
+  licences: Licence[];
+  verticals: Fact<Vertical[]>;
+  paymentMethods: Fact<string[]>;
+  welcomeBonus: Fact<string>;
+  restrictions: Fact<string>;
+  safer: Fact<string[]>;
+  regulatoryActions: RegulatoryAction[];
+  otherFacts: { text: string; source: Source }[];
+  notVerified: string[];
+  /** official site the /go/<slug> redirect points to; only for gbStatus "licensed" */
+  goTarget?: string;
+  lastChecked: string;
 };
 
-export const mockOperators: Operator[] = [
-  {
-    slug: "stake",
-    name: "Stake",
-    legalName: "Medium Rare N.V.",
-    founded: 2017,
-    parent: "Easygo Entertainment",
-    websiteUrl: "https://stake.com",
-    affiliateUrl: "https://stake.com/?c=1baraban",
-    tagline: "The home of crypto-native gambling",
-    tldr: "Stake is a Curaçao-licensed online casino and sportsbook founded in 2017, built around crypto-first banking with sub-1-hour withdrawals on most chains. It offers 5,000+ slots, 90+ live tables, an in-house sportsbook, and a strong original-games suite. Best suited to crypto-native players who value fast payouts and minimal KYC friction at moderate stakes.",
-    score: 8.7,
-    scorePrev: 8.4,
-    subScores: [
-      { label: "License & Safety", score: 7.5, weight: 30 },
-      { label: "Banking & Payouts", score: 9.4, weight: 20 },
-      { label: "Bonuses (true value)", score: 7.8, weight: 15 },
-      { label: "Player Experience", score: 9.2, weight: 15 },
-      { label: "Support", score: 8.9, weight: 10 },
-      { label: "Complaints", score: 8.4, weight: 10, count: 38 },
-    ],
-    verticals: ["casino", "sportsbook", "slot"],
-    licenses: [
-      {
-        authority: "Curaçao Gaming Control Board",
-        number: "8048/JAZ2020-013",
-        registerUrl: "https://gamingcontrolcuracao.org/",
-        tier: "offshore",
-      },
-    ],
-    acceptedCountries: ["CA", "NZ", "BR", "JP", "KR"],
-    paymentMethods: [
-      "Bitcoin",
-      "Ethereum",
-      "USDT",
-      "Litecoin",
-      "Solana",
-      "Tron",
-    ],
-    cryptoSupported: true,
-    payoutSpeedHours: 1,
-    minDepositEur: 1,
-    kycLevel: "soft",
-    liveChat247: true,
-    bonuses: [
-      {
-        type: "welcome",
-        headline: "200% up to $2,000 + Stake Cash",
-        bonusEur: 2000,
-        wagering: 40,
-        minDeposit: 20,
-        expiryDays: 30,
-      },
-    ],
-    pros: [
-      "Sub-1-hour crypto withdrawals consistently observed",
-      'Original "Stake-only" games are genuinely fun',
-      "No KYC for low-volume play under €5k",
-      "24/7 live chat with real human escalation",
-    ],
-    cons: [
-      "Curaçao license, not EU-tier",
-      "Restricted in UK, US, parts of EU",
-      "Wagering on welcome bonus is on the high end",
-      "No fiat withdrawals",
-    ],
-    tags: ["crypto", "no-kyc", "fast-withdrawal", "slots", "sportsbook"],
-    lastVerified: "2026-04-28",
-    nextReviewDue: "2026-07-28",
-    reviewer: {
-      name: "Anna K.",
-      initials: "AK",
-      credentials: "UKGC compliance, 6 yrs",
-      href: "/authors/anna-k",
-    },
-  },
-  {
-    slug: "bcgame",
-    name: "BC.Game",
-    legalName: "BlockDance B.V.",
-    founded: 2017,
-    websiteUrl: "https://bc.game",
-    affiliateUrl: "https://bc.game/i/1baraban",
-    tagline: "The crypto casino with the deepest game library",
-    tldr: 'BC.Game is a Curaçao-licensed crypto casino founded in 2017, supporting 150+ cryptocurrencies and offering 9,000+ games from 80+ providers. Notable for its in-house "BCD" rewards token, frequent 100k+ jackpots, and active community. Best suited to crypto enthusiasts and slot players who want maximum game variety with crypto-native banking.',
-    score: 8.2,
-    scorePrev: 8.0,
-    subScores: [
-      { label: "License & Safety", score: 7.0, weight: 30 },
-      { label: "Banking & Payouts", score: 9.1, weight: 20 },
-      { label: "Bonuses (true value)", score: 7.4, weight: 15 },
-      { label: "Player Experience", score: 8.8, weight: 15 },
-      { label: "Support", score: 8.1, weight: 10 },
-      { label: "Complaints", score: 7.9, weight: 10, count: 52 },
-    ],
-    verticals: ["casino", "slot"],
-    licenses: [
-      {
-        authority: "Curaçao Gaming Control Board",
-        number: "5536/JAZ",
-        registerUrl: "https://gamingcontrolcuracao.org/",
-        tier: "offshore",
-      },
-    ],
-    acceptedCountries: ["CA", "BR", "JP", "IN", "PH"],
-    paymentMethods: ["Bitcoin", "Ethereum", "USDT", "150+ altcoins"],
-    cryptoSupported: true,
-    payoutSpeedHours: 2,
-    minDepositEur: 1,
-    kycLevel: "soft",
-    liveChat247: true,
-    bonuses: [
-      {
-        type: "welcome",
-        headline: "Up to 360% on first 4 deposits",
-        wagering: 40,
-        minDeposit: 10,
-        expiryDays: 30,
-      },
-      {
-        type: "no_deposit",
-        headline: "Daily faucet free spins",
-        freeSpins: 5,
-        wagering: 30,
-      },
-    ],
-    pros: [
-      "9,000+ games — largest crypto-casino library",
-      "150+ cryptocurrencies supported",
-      "Active community + reward token",
-      'Strong in-house "BC Originals" suite',
-    ],
-    cons: [
-      "Curaçao-only licensing",
-      "Welcome bonus structure is complex",
-      "Site occasionally laggy on mobile",
-      "KYC kicks in above €5k",
-    ],
-    tags: ["crypto", "slots", "community", "altcoins"],
-    lastVerified: "2026-04-22",
-    nextReviewDue: "2026-07-22",
-    reviewer: {
-      name: "Marek S.",
-      initials: "MS",
-      credentials: "iGaming analyst, 8 yrs",
-      href: "/authors/marek-s",
-    },
-  },
-  {
-    slug: "bitstarz",
-    name: "BitStarz",
-    legalName: "Direx N.V.",
-    founded: 2014,
-    websiteUrl: "https://bitstarz.com",
-    affiliateUrl: "https://bitstarz.com/?af_id=1baraban",
-    tagline: "The award-winning crypto casino with hybrid fiat support",
-    tldr: 'BitStarz is a Curaçao-licensed casino founded in 2014, one of the longest-running hybrid crypto-fiat operators. It offers 4,000+ slots and live tables, both crypto and fiat banking with same-day withdrawals, and has won multiple "Casino of the Year" awards from industry press. Best suited to slot players who want crypto-fast withdrawals without abandoning fiat options.',
-    score: 8.5,
-    scorePrev: 8.3,
-    subScores: [
-      { label: "License & Safety", score: 7.8, weight: 30 },
-      { label: "Banking & Payouts", score: 9.0, weight: 20 },
-      { label: "Bonuses (true value)", score: 8.2, weight: 15 },
-      { label: "Player Experience", score: 8.9, weight: 15 },
-      { label: "Support", score: 9.0, weight: 10 },
-      { label: "Complaints", score: 8.4, weight: 10, count: 24 },
-    ],
-    verticals: ["casino", "slot"],
-    licenses: [
-      {
-        authority: "Curaçao Gaming Control Board",
-        number: "8048/JAZ",
-        registerUrl: "https://gamingcontrolcuracao.org/",
-        tier: "offshore",
-      },
-    ],
-    acceptedCountries: ["CA", "AU", "NZ", "JP", "BR", "NO"],
-    paymentMethods: [
-      "Bitcoin",
-      "Ethereum",
-      "USDT",
-      "Visa",
-      "Mastercard",
-      "Skrill",
-      "Neteller",
-    ],
-    cryptoSupported: true,
-    payoutSpeedHours: 4,
-    minDepositEur: 20,
-    kycLevel: "soft",
-    liveChat247: true,
-    bonuses: [
-      {
-        type: "welcome",
-        headline: "100% up to €100 + 180 free spins",
-        bonusEur: 100,
-        freeSpins: 180,
-        wagering: 40,
-        minDeposit: 20,
-        expiryDays: 7,
-      },
-    ],
-    pros: [
-      "Hybrid crypto + fiat works seamlessly",
-      "10+ years of operation, low complaint volume",
-      "180 free spins is a genuinely fair welcome offer",
-      "Live chat answers in under 90 seconds",
-    ],
-    cons: [
-      "Curaçao license, EU regulators don't recognise",
-      "Wagering 40x is industry-average, not a discount",
-      "No sports betting",
-      "Free spins limited to specific Pragmatic titles",
-    ],
-    tags: ["crypto", "fiat", "slots", "free-spins", "fast-withdrawal"],
-    lastVerified: "2026-04-25",
-    nextReviewDue: "2026-07-25",
-    reviewer: {
-      name: "Anna K.",
-      initials: "AK",
-      credentials: "UKGC compliance, 6 yrs",
-      href: "/authors/anna-k",
-    },
-  },
+export const CHECKED = "2026-11-07";
+
+const ukgc = (id: number): Source => ({
+  label: `UK Gambling Commission public register, account ${id}`,
+  url: `https://www.gamblingcommission.gov.uk/public-register/business/detail/${id}`,
+  primary: true,
+});
+const ukgcDomains = (id: number): Source => ({
+  label: `UKGC register, domain names for account ${id}`,
+  url: `https://www.gamblingcommission.gov.uk/public-register/business/detail/domain-names/${id}`,
+  primary: true,
+});
+const wiki = (page: string, title: string): Source => ({
+  label: `Wikipedia: ${title}`,
+  url: `https://en.wikipedia.org/wiki/${page}`,
+  primary: false,
+});
+const ukgcRules: Source = {
+  label: "UKGC: gambling promotions rules from 19 January 2026",
+  url: "https://www.gamblingcommission.gov.uk/news/article/gambling-promotions-to-be-safer-and-simpler-for-consumers",
+  primary: true,
+};
+
+const gbBonusNote =
+  "Not listed. The GB site was not reachable from our check location, and offers change often. Since 19 January 2026 UK rules cap bonus wagering at 10x. Check the current offer and its full terms on the operator's site before you sign up.";
+const gbPayNote =
+  "Not verified. The operator's GB site was not reachable from our check location on the check date.";
+const offshoreBonusNote =
+  "Not listed. We do not publish bonus offers for operators that are not licensed in Great Britain.";
+
+export const operators: Operator[] = [
   {
     slug: "leovegas",
     name: "LeoVegas",
-    legalName: "LeoVegas Gaming plc",
-    founded: 2011,
-    parent: "MGM Resorts International",
-    websiteUrl: "https://leovegas.com",
-    affiliateUrl: "https://leovegas.com/?aff=1baraban",
-    tagline: "The mobile-first king with full EU licensing",
-    tldr: "LeoVegas is a UKGC- and MGA-licensed casino owned by MGM Resorts (since 2022), founded in Sweden in 2011. It pioneered mobile-first casino UX and offers 3,000+ slots, sportsbook, and live casino with full EU and UK regulatory coverage. Best suited to UK and EU players who prioritise tier-1 licensing, fiat banking, and a polished mobile app over crypto support.",
-    score: 9.1,
-    scorePrev: 9.0,
-    subScores: [
-      { label: "License & Safety", score: 9.6, weight: 30 },
-      { label: "Banking & Payouts", score: 8.7, weight: 20 },
-      { label: "Bonuses (true value)", score: 7.9, weight: 15 },
-      { label: "Player Experience", score: 9.4, weight: 15 },
-      { label: "Support", score: 9.0, weight: 10 },
-      { label: "Complaints", score: 9.2, weight: 10, count: 17 },
-    ],
-    verticals: ["casino", "sportsbook", "slot"],
-    licenses: [
-      {
-        authority: "UK Gambling Commission",
-        number: "38582",
-        registerUrl: "https://www.gamblingcommission.gov.uk/public-register",
-        tier: "tier1",
-      },
-      {
-        authority: "Malta Gaming Authority",
-        number: "MGA/B2C/213/2011",
-        registerUrl: "https://www.mga.org.mt/licensee-register/",
-        tier: "tier1",
-      },
-    ],
-    acceptedCountries: ["GB", "IE", "MT", "SE", "DE", "NL", "CA", "NZ"],
-    paymentMethods: [
-      "Visa",
-      "Mastercard",
-      "Trustly",
-      "Skrill",
-      "Neteller",
-      "PayPal",
-      "Bank transfer",
-    ],
-    cryptoSupported: false,
-    payoutSpeedHours: 12,
-    minDepositEur: 10,
-    kycLevel: "full",
-    liveChat247: true,
-    bonuses: [
-      {
-        type: "welcome",
-        headline: "Up to £100 cash + 50 spins on Book of Dead",
-        bonusEur: 100,
-        freeSpins: 50,
-        wagering: 35,
-        minDeposit: 10,
-        expiryDays: 30,
-      },
-    ],
-    pros: [
-      "Tier-1 UKGC + MGA licensing",
-      "Mobile app is best-in-class",
-      "Owned by MGM — corporate stability",
-      "Self-exclusion + responsible gambling tools are exemplary",
-    ],
-    cons: [
-      "No crypto support",
-      "12-hour withdrawal SLA is slower than crypto-native ops",
-      "Wagering on bonus is moderate but not generous",
-      "Fewer game providers than crypto-only competitors",
-    ],
-    tags: ["ukgc", "mga", "fiat", "mobile", "tier1", "eu"],
-    lastVerified: "2026-04-30",
-    nextReviewDue: "2026-07-30",
-    reviewer: {
-      name: "Anna K.",
-      initials: "AK",
-      credentials: "UKGC compliance, 6 yrs",
-      href: "/authors/anna-k",
+    domain: "leovegas.co.uk",
+    gbStatus: "licensed",
+    summary:
+      "LeoVegas is a Swedish-founded online casino and sportsbook, owned by MGM Resorts International since 2022. Its GB site, leovegas.co.uk, runs under UK Gambling Commission account 39198 held by LeoVegas Gaming PLC.",
+    verdict:
+      "Licensed in Great Britain for casino, bingo and betting, with an active register entry on our check date. The Commission fined the group in 2022 for anti-money laundering and social responsibility failures. We have not tested deposits, withdrawals or support.",
+    legalName: {
+      value: "LeoVegas Gaming PLC",
+      sources: [ukgc(39198)],
+      checked: CHECKED,
+      note: "Head office in Sliema, Malta.",
     },
+    registration: {
+      value: "Malta, C59314",
+      sources: [
+        {
+          label: "Swedish Gambling Authority decision listing",
+          url: "https://www.spelinspektionen.se/",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "Taken from a Swedish regulator document; not checked against the Malta Business Registry.",
+    },
+    owner: {
+      value: "MGM Resorts International (acquired in 2022)",
+      sources: [wiki("LeoVegas", "LeoVegas")],
+      checked: CHECKED,
+      note: "Secondary source only.",
+    },
+    launchYear: {
+      value: 2011,
+      sources: [wiki("LeoVegas", "LeoVegas")],
+      checked: CHECKED,
+      note: "Sources differ (2011 or 2012). The UKGC casino licence is active from 1 November 2014.",
+    },
+    licences: [
+      {
+        regulator: "UK Gambling Commission",
+        number: "39198",
+        holder: "LeoVegas Gaming PLC",
+        status:
+          "Active: remote casino (from 1 Nov 2014), bingo (26 Feb 2018), betting real events (29 Apr 2016), virtual events (23 Apr 2025)",
+        verifyUrl:
+          "https://www.gamblingcommission.gov.uk/public-register/business/detail/39198",
+        source: ukgc(39198),
+      },
+    ],
+    verticals: {
+      value: ["casino", "sportsbook", "bingo"],
+      sources: [ukgc(39198)],
+      checked: CHECKED,
+      note: "Based on the licence activities on the register.",
+    },
+    paymentMethods: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: gbPayNote,
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [ukgcRules],
+      checked: CHECKED,
+      note: gbBonusNote,
+    },
+    restrictions: {
+      value:
+        "The GB-licensed domain is leovegas.co.uk. The register lists leovegas.com as inactive for GB customers.",
+      sources: [ukgcDomains(39198)],
+      checked: CHECKED,
+    },
+    safer: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified on the operator's site. UKGC licensees must offer deposit limits, time-outs and GAMSTOP self-exclusion.",
+    },
+    regulatoryActions: [
+      {
+        date: "2022-08-03",
+        regulator: "UK Gambling Commission",
+        amount: "£1.32m",
+        summary:
+          "Financial penalty, official warning and audit for anti-money laundering and social responsibility failures.",
+        source: {
+          label: "UKGC news",
+          url: "https://www.gamblingcommission.gov.uk/news/article/online-operator-leovegas-fined-gbp1-2-million",
+          primary: true,
+        },
+      },
+    ],
+    otherFacts: [
+      {
+        text: "Trading names on the same GB licence include Pink Casino, Slotboss, BetMGM UK, 21.co.uk and BetUK.",
+        source: ukgcDomains(39198),
+      },
+    ],
+    notVerified: [
+      "Payment methods",
+      "Current welcome offer and its terms",
+      "Withdrawal times",
+      "Malta Gaming Authority licence number",
+    ],
+    goTarget: "https://www.leovegas.co.uk/",
+    lastChecked: CHECKED,
+  },
+  {
+    slug: "888casino",
+    name: "888casino",
+    domain: "888casino.com",
+    gbStatus: "licensed",
+    summary:
+      "888casino is one of the oldest online casino brands, operated for GB players by 888 UK Limited under UK Gambling Commission account 39028. The group, formerly 888 Holdings, has traded as Evoke plc since 2024.",
+    verdict:
+      "Licensed in Great Britain for casino, bingo and betting on our check date. It also has the longest enforcement record in this set: a £9.4m penalty in 2022 and three smaller penalties in 2024 and 2025. We have not tested deposits, withdrawals or support.",
+    legalName: {
+      value: "888 UK Limited",
+      sources: [ukgc(39028)],
+      checked: CHECKED,
+      note: "Head office at Europort, Gibraltar.",
+    },
+    registration: {
+      value: null,
+      sources: [ukgc(39028)],
+      checked: CHECKED,
+      note: "Not shown on the UKGC register; Gibraltar registry not checked.",
+    },
+    owner: {
+      value: "Evoke plc (formerly 888 Holdings, renamed 2024)",
+      sources: [wiki("888casino", "888casino")],
+      checked: CHECKED,
+      note: "Secondary source only.",
+    },
+    launchYear: {
+      value: 1997,
+      sources: [wiki("888casino", "888casino")],
+      checked: CHECKED,
+      note: "1997 is the launch of Casino-on-Net, the predecessor brand. The 888casino name came later.",
+    },
+    licences: [
+      {
+        regulator: "UK Gambling Commission",
+        number: "39028",
+        holder: "888 UK Limited",
+        status:
+          "Active: remote casino, bingo, betting real events (all from 1 Nov 2014), virtual events (16 Apr 2020)",
+        verifyUrl:
+          "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+        source: ukgc(39028),
+      },
+    ],
+    verticals: {
+      value: ["casino", "sportsbook", "bingo"],
+      sources: [ukgc(39028)],
+      checked: CHECKED,
+      note: "Sportsbook runs as 888sport. Based on the licence activities on the register.",
+    },
+    paymentMethods: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: gbPayNote,
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [ukgcRules],
+      checked: CHECKED,
+      note: "Not listed. The promotions page we could reach showed a euro offer that we could not confirm as the GB offer. Since 19 January 2026 UK rules cap bonus wagering at 10x.",
+    },
+    restrictions: {
+      value: "888casino.com is an active GB domain on the register.",
+      sources: [ukgcDomains(39028)],
+      checked: CHECKED,
+    },
+    safer: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified on the operator's site. UKGC licensees must offer deposit limits, time-outs and GAMSTOP self-exclusion.",
+    },
+    regulatoryActions: [
+      {
+        date: "2022-03-01",
+        regulator: "UK Gambling Commission",
+        amount: "£9.4m",
+        summary:
+          "Penalty for social responsibility and anti-money laundering failures.",
+        source: {
+          label: "UKGC news",
+          url: "https://www.gamblingcommission.gov.uk/news/article/gbp9-4m-fine-for-online-operator-888",
+          primary: true,
+        },
+      },
+      {
+        date: "2024-08-19",
+        regulator: "UK Gambling Commission",
+        amount: "£23,000",
+        summary: "Penalty linked to the credit card licence condition.",
+        source: {
+          label: "UKGC register, regulatory actions for account 39028",
+          url: "https://www.gamblingcommission.gov.uk/public-register/business/detail/actions/39028",
+          primary: true,
+        },
+      },
+      {
+        date: "2025-08-07",
+        regulator: "UK Gambling Commission",
+        amount: "£33,075",
+        summary: "Penalty under social responsibility code provision 3.9.1.",
+        source: {
+          label: "UKGC register, regulatory action 272",
+          url: "https://www.gamblingcommission.gov.uk/public-register/regulatory-action/detail/272",
+          primary: true,
+        },
+      },
+      {
+        date: "2025-11-18",
+        regulator: "UK Gambling Commission",
+        amount: "£86,843",
+        summary: "Penalty relating to self-exclusion (code provision 3.5.3).",
+        source: {
+          label: "UKGC register, regulatory actions for account 39028",
+          url: "https://www.gamblingcommission.gov.uk/public-register/business/detail/actions/39028",
+          primary: true,
+        },
+      },
+    ],
+    otherFacts: [],
+    notVerified: [
+      "Payment methods",
+      "Current GB welcome offer and its terms",
+      "Withdrawal times",
+      "Gibraltar licence number",
+      "Company registration number",
+    ],
+    goTarget: "https://www.888casino.com/",
+    lastChecked: CHECKED,
+  },
+  {
+    slug: "betway",
+    name: "Betway",
+    domain: "betway.com",
+    gbStatus: "licensed",
+    summary:
+      "Betway is a sportsbook and online casino run for GB players by Betway Limited under UK Gambling Commission account 39372. It is part of Super Group (SGHC) Limited, listed on the New York Stock Exchange since 2022.",
+    verdict:
+      "Licensed in Great Britain for casino and betting on our check date. In 2020 Betway paid £11.6m over failings linked to VIP customers, one of the larger settlements of that period. We have not tested deposits, withdrawals or support.",
+    legalName: {
+      value: "Betway Limited",
+      sources: [ukgc(39372)],
+      checked: CHECKED,
+      note: "Head office in Gzira, Malta.",
+    },
+    registration: {
+      value: "Malta, C39710",
+      sources: [
+        {
+          label: "OpenCorporates",
+          url: "https://opencorporates.com/companies/mt/C39710",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "Not checked against the Malta Business Registry.",
+    },
+    owner: {
+      value: "Super Group (SGHC) Limited",
+      sources: [wiki("Betway", "Betway")],
+      checked: CHECKED,
+      note: "Secondary source only.",
+    },
+    launchYear: {
+      value: 2006,
+      sources: [wiki("Betway", "Betway")],
+      checked: CHECKED,
+      note: "UKGC licences active from 1 November 2014.",
+    },
+    licences: [
+      {
+        regulator: "UK Gambling Commission",
+        number: "39372",
+        holder: "Betway Limited",
+        status:
+          "Active: remote casino (from 1 Nov 2014), betting real events (1 Nov 2014), virtual events (9 Jun 2017)",
+        verifyUrl:
+          "https://www.gamblingcommission.gov.uk/public-register/business/detail/39372",
+        source: ukgc(39372),
+      },
+    ],
+    verticals: {
+      value: ["sportsbook", "casino"],
+      sources: [ukgc(39372)],
+      checked: CHECKED,
+      note: "No bingo or poker activity on the register.",
+    },
+    paymentMethods: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: gbPayNote,
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [ukgcRules],
+      checked: CHECKED,
+      note: "Not listed. The operator's site was not reachable, and third-party sites quote conflicting terms. Since 19 January 2026 UK rules cap bonus wagering at 10x.",
+    },
+    restrictions: {
+      value:
+        "Active GB domains include betway.com and its casino, sports and vegas subdomains, plus Jackpot City and Spin Casino domains.",
+      sources: [ukgcDomains(39372)],
+      checked: CHECKED,
+    },
+    safer: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified on the operator's site. UKGC licensees must offer deposit limits, time-outs and GAMSTOP self-exclusion.",
+    },
+    regulatoryActions: [
+      {
+        date: "2020-03-12",
+        regulator: "UK Gambling Commission",
+        amount: "£11.6m",
+        summary:
+          "Payment in lieu of a penalty plus divestment, over social responsibility and anti-money laundering failings linked to VIP customers.",
+        source: {
+          label: "UKGC public statement",
+          url: "https://www.gamblingcommission.gov.uk/public-register/public-statement/detail/betway-public-statement",
+          primary: true,
+        },
+      },
+    ],
+    otherFacts: [
+      {
+        text: "Trading names on the same GB licence include Hippodrome Online, Jackpot City and Spin Casino.",
+        source: ukgc(39372),
+      },
+    ],
+    notVerified: [
+      "Payment methods",
+      "Current welcome offer and its terms",
+      "Withdrawal times",
+      "Malta Gaming Authority licence number",
+    ],
+    goTarget: "https://betway.com/en-gb",
+    lastChecked: CHECKED,
   },
   {
     slug: "mr-green",
     name: "Mr Green",
-    legalName: "Hero Gaming Ltd",
-    founded: 2008,
-    parent: "William Hill (888 Holdings)",
-    websiteUrl: "https://mrgreen.com",
-    affiliateUrl: "https://mrgreen.com/?af=1baraban",
-    tagline: "The gentleman of online casinos",
-    tldr: 'Mr Green is a UKGC- and MGA-licensed casino founded in 2008 and now owned by 888 Holdings. Distinctive for its "Green Gaming" responsible-gambling toolkit — predictive limits, reality checks, and self-assessment. Offers 1,500+ slots and live casino with fiat-first banking. Best suited to UK and EU players who value premium presentation and best-in-class responsible gambling tools.',
-    score: 8.8,
-    scorePrev: 8.6,
-    subScores: [
-      { label: "License & Safety", score: 9.5, weight: 30 },
-      { label: "Banking & Payouts", score: 8.4, weight: 20 },
-      { label: "Bonuses (true value)", score: 7.6, weight: 15 },
-      { label: "Player Experience", score: 9.0, weight: 15 },
-      { label: "Support", score: 8.7, weight: 10 },
-      { label: "Complaints", score: 9.0, weight: 10, count: 11 },
-    ],
-    verticals: ["casino", "slot"],
-    licenses: [
-      {
-        authority: "UK Gambling Commission",
-        number: "39264",
-        registerUrl: "https://www.gamblingcommission.gov.uk/public-register",
-        tier: "tier1",
-      },
-      {
-        authority: "Malta Gaming Authority",
-        number: "MGA/B2C/231/2012",
-        registerUrl: "https://www.mga.org.mt/licensee-register/",
-        tier: "tier1",
-      },
-    ],
-    acceptedCountries: ["GB", "IE", "MT", "SE", "DE", "AT"],
-    paymentMethods: [
-      "Visa",
-      "Mastercard",
-      "Trustly",
-      "Skrill",
-      "Neteller",
-      "PayPal",
-      "Bank transfer",
-    ],
-    cryptoSupported: false,
-    payoutSpeedHours: 24,
-    minDepositEur: 10,
-    kycLevel: "full",
-    liveChat247: false,
-    bonuses: [
-      {
-        type: "welcome",
-        headline: "100% up to £100 + 200 free spins",
-        bonusEur: 100,
-        freeSpins: 200,
-        wagering: 35,
-        minDeposit: 20,
-        expiryDays: 60,
-      },
-    ],
-    pros: [
-      "Best-in-class Green Gaming RG tools (industry benchmark)",
-      "UKGC + MGA tier-1 licensing",
-      "Premium brand presentation, no clutter",
-      "Long, fair bonus expiry (60 days)",
-    ],
-    cons: [
-      "No 24/7 live chat (07:00–23:00 only)",
-      "No crypto",
-      "24-hour withdrawal SLA is slower than peers",
-      "Smaller game library than newer competitors",
-    ],
-    tags: ["ukgc", "mga", "fiat", "responsible-gambling", "premium", "eu"],
-    lastVerified: "2026-04-26",
-    nextReviewDue: "2026-07-26",
-    reviewer: {
-      name: "Marek S.",
-      initials: "MS",
-      credentials: "iGaming analyst, 8 yrs",
-      href: "/authors/marek-s",
+    domain: "mrgreen.com",
+    gbStatus: "surrendered",
+    summary:
+      "Mr Green is a Malta-based online casino brand, part of the William Hill group that Evoke plc (formerly 888 Holdings) now owns. Mr Green Limited held UK Gambling Commission account 39264 until it surrendered the licence on 28 October 2024.",
+    verdict:
+      "Not available to GB players: the UK licence was surrendered in October 2024 and no GB domain appears on the register. We keep this profile so readers who knew the brand can see what changed. No outbound link.",
+    legalName: {
+      value: "Mr Green Limited",
+      sources: [ukgc(39264)],
+      checked: CHECKED,
+      note: "Former UKGC licence holder, head office in Sliema, Malta.",
     },
+    registration: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not shown on the UKGC register; Malta registry not checked.",
+    },
+    owner: {
+      value:
+        "Evoke plc, through William Hill (which bought Mr Green in January 2019)",
+      sources: [wiki("Mr_Green_(company)", "Mr Green (company)")],
+      checked: CHECKED,
+      note: "Secondary source only.",
+    },
+    launchYear: {
+      value: 2008,
+      sources: [wiki("Mr_Green_(company)", "Mr Green (company)")],
+      checked: CHECKED,
+      note: "Sources give 2007 for the company and 2008 for the site.",
+    },
+    licences: [
+      {
+        regulator: "UK Gambling Commission",
+        number: "39264",
+        holder: "Mr Green Limited",
+        status:
+          "Surrendered on 28 Oct 2024 (previously remote casino from 1 Nov 2014, bingo from 7 Jul 2017)",
+        verifyUrl:
+          "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+        source: ukgc(39264),
+      },
+      {
+        regulator: "Malta Gaming Authority and other EU regulators",
+        number: null,
+        holder: null,
+        status:
+          "mrgreen.com lists MGA, Danish and Swedish licences; numbers not captured on our check date.",
+        verifyUrl: null,
+        source: {
+          label: "Mr Green responsible gaming page",
+          url: "https://www.mrgreen.com/en/responsible-gaming/",
+          primary: true,
+        },
+      },
+    ],
+    verticals: {
+      value: ["casino"],
+      sources: [ukgc(39264)],
+      checked: CHECKED,
+      note: "From the former GB licence; current offer outside GB not verified.",
+    },
+    paymentMethods: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified. No GB offering.",
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: offshoreBonusNote,
+    },
+    restrictions: {
+      value:
+        "Not available in Great Britain since the UK licence was surrendered on 28 October 2024.",
+      sources: [ukgc(39264)],
+      checked: CHECKED,
+    },
+    safer: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified.",
+    },
+    regulatoryActions: [
+      {
+        date: "2020-02-27",
+        regulator: "UK Gambling Commission",
+        amount: "£3m",
+        summary:
+          "Regulatory settlement for anti-money laundering and social responsibility failures.",
+        source: {
+          label: "UKGC news",
+          url: "https://www.gamblingcommission.gov.uk/news/article/mr-green-to-pay-gbp3-million-for-regulatory-failures",
+          primary: true,
+        },
+      },
+    ],
+    otherFacts: [],
+    notVerified: [
+      "Current licence numbers outside GB",
+      "Payment methods",
+      "Company registration number",
+    ],
+    lastChecked: CHECKED,
+  },
+  {
+    slug: "stake",
+    name: "Stake",
+    domain: "stake.com",
+    gbStatus: "not-licensed",
+    summary:
+      "Stake is a crypto-first online casino and sportsbook launched in 2017, linked to the Australian company Easygo. Its terms name Medium Rare N.V. of Curaçao as operator. It is not licensed in Great Britain, and its former UK site, run by a separate licensee, closed in 2025.",
+    verdict:
+      "Not licensed in Great Britain and not available to GB players. Its Curaçao licence status was unclear on our check date. We publish these facts for information only, with no outbound link and no bonus details.",
+    legalName: {
+      value: "Medium Rare N.V.",
+      sources: [
+        {
+          label: "DegenOwl review quoting Stake's terms",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "stake.com was not reachable from our check location, so this comes from a secondary source.",
+    },
+    registration: {
+      value: "Curaçao, 145353",
+      sources: [
+        {
+          label: "DegenOwl review quoting Stake's terms",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "Not checked against the Curaçao Chamber of Commerce.",
+    },
+    owner: {
+      value: "Linked to Easygo (founders Ed Craven and Bijan Tehrani)",
+      sources: [wiki("Stake_(online_casino)", "Stake (online casino)")],
+      checked: CHECKED,
+      note: "Wikipedia describes Easygo as the technology provider; the ownership of Medium Rare N.V. is not verified from a registry.",
+    },
+    launchYear: {
+      value: 2017,
+      sources: [wiki("Stake_(online_casino)", "Stake (online casino)")],
+      checked: CHECKED,
+    },
+    licences: [
+      {
+        regulator: "Curaçao Gaming Authority",
+        number: "OGL/2024/1451/0918",
+        holder: "Medium Rare N.V.",
+        status:
+          "Status unclear: the licence certificate reportedly shows Active, while the authority's register (dated 2026-09-21) reportedly shows 'assessment in progress'. Not confirmed by us.",
+        verifyUrl: null,
+        source: {
+          label: "DegenOwl review",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      },
+    ],
+    verticals: {
+      value: ["casino", "sportsbook"],
+      sources: [wiki("Stake_(online_casino)", "Stake (online casino)")],
+      checked: CHECKED,
+    },
+    paymentMethods: {
+      value: [
+        "Cryptocurrencies (BTC, ETH, USDT, SOL and others)",
+        "Cards and bank transfer in selected local currencies",
+      ],
+      sources: [
+        {
+          label: "DegenOwl review summarising Stake's help centre",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "Secondary source.",
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: offshoreBonusNote,
+    },
+    restrictions: {
+      value:
+        "Terms reportedly list 45 prohibited jurisdictions, including the United States, Ireland and Ontario. Not available in GB. Blocked by regulators in Belgium, Poland and France.",
+      sources: [
+        {
+          label: "DegenOwl review",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+        wiki("Stake_(online_casino)", "Stake (online casino)"),
+      ],
+      checked: CHECKED,
+      note: "Full list not retrieved from the operator.",
+    },
+    safer: {
+      value: [
+        "Deposit, loss and wager limits",
+        "Break in play",
+        "Product exclusion",
+        "Self-exclusion",
+      ],
+      sources: [
+        {
+          label: "DegenOwl review",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      ],
+      checked: CHECKED,
+      note: "Secondary source.",
+    },
+    regulatoryActions: [],
+    otherFacts: [
+      {
+        text: "In February 2025 the UK Gambling Commission warned Everton FC, a Stake shirt sponsor, that club officers could be liable for promoting an unlicensed gambling business.",
+        source: wiki("Stake_(online_casino)", "Stake (online casino)"),
+      },
+      {
+        text: "TGP Europe, the separate licensee that ran the UK-facing Stake site, surrendered its UK licence in May 2025.",
+        source: {
+          label: "DegenOwl review citing UKGC",
+          url: "https://www.degenowl.com/reviews/stake-casino-review",
+          primary: false,
+        },
+      },
+    ],
+    notVerified: [
+      "Current Curaçao licence status",
+      "Operator details from stake.com itself (blocked from our location)",
+      "Full list of restricted countries",
+    ],
+    lastChecked: CHECKED,
+  },
+  {
+    slug: "bcgame",
+    name: "BC.Game",
+    domain: "bc.game",
+    gbStatus: "not-licensed",
+    summary:
+      "BC.Game is a crypto casino and sportsbook running since 2017. Its homepage names Twocent Technology Limited as operator, under a licence from Anjouan (Union of Comoros). It is not licensed in Great Britain and closed its UK-facing site in December 2024.",
+    verdict:
+      "Not licensed in Great Britain and not available to GB players. Its earlier Curaçao licence was reported revoked in late 2024. We publish these facts for information only, with no outbound link and no bonus details.",
+    legalName: {
+      value: "Twocent Technology Limited",
+      sources: [
+        { label: "bc.game homepage", url: "https://bc.game/", primary: true },
+      ],
+      checked: CHECKED,
+    },
+    registration: {
+      value: "Belize, 41939",
+      sources: [
+        {
+          label: "BC.Game terms (whitepaper copy)",
+          url: "https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+      note: "From the copy of the terms hosted on the operator's whitepaper site; not checked against the Belize registry.",
+    },
+    owner: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified: the operator does not name a parent group.",
+    },
+    launchYear: {
+      value: 2017,
+      sources: [
+        { label: "bc.game homepage", url: "https://bc.game/", primary: true },
+      ],
+      checked: CHECKED,
+    },
+    licences: [
+      {
+        regulator: "Anjouan Gaming Authority (Union of Comoros)",
+        number: "ALSI-202410011-FI1",
+        holder: "Twocent Technology Limited",
+        status:
+          "Cited on the operator's homepage. A third-party register mirror reports it active until 2027-10-01; the official register did not load for us.",
+        verifyUrl: "https://anjouangaming.com/license-register/",
+        source: {
+          label: "bc.game homepage",
+          url: "https://bc.game/",
+          primary: true,
+        },
+      },
+      {
+        regulator: "Curaçao (former regime)",
+        number: "OGL/2023/118/0060",
+        holder: "Small House B.V.",
+        status:
+          "Reported revoked. The regulator announced its intent to revoke on 26 Nov 2024 after Small House B.V. was declared bankrupt.",
+        verifyUrl: null,
+        source: {
+          label: "Next.io",
+          url: "https://next.io/news/casino/curacao-gambling-regulator-revoke-bc-game-licence/",
+          primary: false,
+        },
+      },
+    ],
+    verticals: {
+      value: ["casino", "sportsbook"],
+      sources: [
+        { label: "bc.game homepage", url: "https://bc.game/", primary: true },
+      ],
+      checked: CHECKED,
+    },
+    paymentMethods: {
+      value: [
+        "Cryptocurrencies (BTC, ETH, USDT, DOGE, TRX, XRP and others)",
+        "Card purchase of crypto inside the site",
+      ],
+      sources: [
+        { label: "bc.game homepage", url: "https://bc.game/", primary: true },
+      ],
+      checked: CHECKED,
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: offshoreBonusNote,
+    },
+    restrictions: {
+      value:
+        "Terms list Aruba, Bonaire, Curaçao, France, the Netherlands, Saba, Statia, St Martin and the USA as prohibited. UK-facing site closed in December 2024.",
+      sources: [
+        {
+          label: "BC.Game terms (whitepaper copy)",
+          url: "https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+      note: "The live terms page needs JavaScript and was not readable for us.",
+    },
+    safer: {
+      value: ["Self-exclusion and limit tools in account settings"],
+      sources: [
+        { label: "bc.game homepage", url: "https://bc.game/", primary: true },
+      ],
+      checked: CHECKED,
+      note: "Specific limit types not verified.",
+    },
+    regulatoryActions: [],
+    otherFacts: [
+      {
+        text: "In November 2024 the Curaçao regulator announced its intent to revoke the licence of Small House B.V., the former BC.Game licence holder, after a court declared it bankrupt. BC.Game disputes liability.",
+        source: {
+          label: "Next.io",
+          url: "https://next.io/news/casino/curacao-gambling-regulator-revoke-bc-game-licence/",
+          primary: false,
+        },
+      },
+    ],
+    notVerified: [
+      "Owner or parent group",
+      "Official Anjouan register entry",
+      "Minimum deposit and withdrawal limits",
+    ],
+    lastChecked: CHECKED,
+  },
+  {
+    slug: "bitstarz",
+    name: "BitStarz",
+    domain: "bitstarz.com",
+    gbStatus: "not-licensed",
+    summary:
+      "BitStarz is a crypto and fiat online casino founded in 2014. Its terms name Gareton B.V. of Curaçao as operator, under Curaçao Gaming Authority licence OGL/2024/165/0185. Its own terms bar real-money play from the UK and many EU countries.",
+    verdict:
+      "Not licensed in Great Britain, and its terms exclude UK players. We publish these facts for information only, with no outbound link and no bonus details.",
+    legalName: {
+      value: "Gareton B.V.",
+      sources: [
+        {
+          label: "BitStarz terms, section 1.2",
+          url: "https://bitstarz.com/terms",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+      note: "Registered office in Willemstad, Curaçao.",
+    },
+    registration: {
+      value: "Curaçao, 160656",
+      sources: [
+        {
+          label: "BitStarz terms, section 1.2",
+          url: "https://bitstarz.com/terms",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+      note: "Not checked against the Curaçao registry.",
+    },
+    owner: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: "Not verified: no parent group stated. The site says it was previously operated by Dama N.V.",
+    },
+    launchYear: {
+      value: 2014,
+      sources: [
+        {
+          label: "bitstarz.com homepage",
+          url: "https://bitstarz.com/",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+    },
+    licences: [
+      {
+        regulator: "Curaçao Gaming Authority",
+        number: "OGL/2024/165/0185",
+        holder: "Gareton B.V.",
+        status:
+          "Stated in the operator's terms. Not checked against the authority's register.",
+        verifyUrl: null,
+        source: {
+          label: "BitStarz terms, section 1.2",
+          url: "https://bitstarz.com/terms",
+          primary: true,
+        },
+      },
+    ],
+    verticals: {
+      value: ["casino"],
+      sources: [
+        {
+          label: "bitstarz.com homepage",
+          url: "https://bitstarz.com/",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+    },
+    paymentMethods: {
+      value: [
+        "Cryptocurrencies (BTC incl. Lightning, ETH, SOL, USDT, USDC, LTC, DOGE and others)",
+        "Visa and Mastercard",
+      ],
+      sources: [
+        {
+          label: "bitstarz.com homepage",
+          url: "https://bitstarz.com/",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+    },
+    welcomeBonus: {
+      value: null,
+      sources: [],
+      checked: CHECKED,
+      note: offshoreBonusNote,
+    },
+    restrictions: {
+      value:
+        "Terms section 3.6 bars real-money play from the USA, the UK and its territories, Spain, France, the Netherlands, Belgium, Portugal, Poland, Ukraine and many more.",
+      sources: [
+        {
+          label: "BitStarz terms, section 3.6",
+          url: "https://bitstarz.com/terms",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+    },
+    safer: {
+      value: [
+        "Deposit, loss, wager and session limits",
+        "Cooling-off break",
+        "Self-exclusion",
+      ],
+      sources: [
+        {
+          label: "bitstarz.com homepage",
+          url: "https://bitstarz.com/",
+          primary: true,
+        },
+        {
+          label: "BitStarz Play Safe page",
+          url: "https://bitstarz.com/play-safe",
+          primary: true,
+        },
+      ],
+      checked: CHECKED,
+      note: "The Play Safe page describes only self-exclusion through support, so the two pages disagree.",
+    },
+    regulatoryActions: [],
+    otherFacts: [],
+    notVerified: [
+      "Curaçao Gaming Authority register entry",
+      "Owner or parent group",
+    ],
+    lastChecked: CHECKED,
   },
 ];
 
-export const operatorsBySlug = (): Record<string, Operator> =>
-  Object.fromEntries(mockOperators.map((op) => [op.slug, op]));
+export const gbLicensed = operators.filter((o) => o.gbStatus === "licensed");
+export const notInGb = operators.filter((o) => o.gbStatus !== "licensed");
 
-export const operatorsByVertical = (vertical: Vertical): Operator[] =>
-  mockOperators
-    .filter((op) => op.verticals.includes(vertical))
-    .sort((a, b) => b.score - a.score);
+export const verticalLabels: Record<Vertical, string> = {
+  casino: "Online casino",
+  sportsbook: "Sports betting",
+  bingo: "Bingo",
+  poker: "Poker",
+};
+
+export const gbStatusLabel: Record<GbStatus, string> = {
+  licensed: "UKGC licensed",
+  surrendered: "UK licence surrendered",
+  "not-licensed": "Not licensed in GB",
+};
+
+export function findOperator(slug: string) {
+  return operators.find((o) => o.slug === slug);
+}

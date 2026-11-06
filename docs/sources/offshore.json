@@ -1,0 +1,284 @@
+[
+ {
+  "operator": "Stake",
+  "domain": "stake.com",
+  "legalName": {
+   "value": "Medium Rare N.V.",
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "Secondary source quoting Stake terms; primary https://stake.com/policies/terms blocked (403). stake.com returns HTTP 403 (Cloudflare) to automated fetch and web.archive.org is blocked from this environment; values taken from a third-party review that read Stake's live pages on 2026-10-02. Registered address per same source: Seru Loraweg 17 B, Curaçao. Terms clause 1.1 says Cyprus subsidiaries Medium Rare Limited and MRS Tech Ltd may handle some payments."
+  },
+  "companyRegistration": {
+   "value": "Curaçao, 145353",
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "Not independently verified against Curaçao Chamber of Commerce register."
+  },
+  "ownerGroup": {
+   "value": "Easygo (founders Ed Craven and Bijan Tehrani); Wikipedia says Easygo provides technology to Stake",
+   "source": "https://en.wikipedia.org/wiki/Stake_(online_casino)",
+   "checked": "2026-11-07",
+   "note": "Ownership structure of Medium Rare N.V. itself not verified from a registry. stake.us is run by a different company, Sweepsteaks Limited (Cyprus) per https://www.degenowl.com/reviews/stake-casino-review"
+  },
+  "launchYear": {
+   "value": 2017,
+   "source": "https://en.wikipedia.org/wiki/Stake_(online_casino)",
+   "checked": "2026-11-07"
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "Curaçao Gaming Authority (CGA)",
+     "licenceNumber": "OGL/2024/1451/0918",
+     "licenceHolder": "Medium Rare N.V.",
+     "verifyUrl": null,
+     "status": "Cited in Stake terms per review. Review notes CGA certificate for stake.com shows Active but the CGA register dated 2026-09-21 shows 'Assessment in progress' with expiry 2026-06-09; conflict unresolved. Footer number not seen directly."
+    }
+   ],
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "not verified: CGA register not fetched; footer blocked. Do not state licence as confirmed active without checking the CGA register."
+  },
+  "restrictedCountries": {
+   "value": "Terms clause 14.3 lists 45 prohibited jurisdictions (44 countries/territories plus Ontario, Canada), including the United States and Ireland, Croatia. UK is also unavailable (TGP Europe closed stake.uk.com in Feb 2025). Full list not retrieved. Stake.com appears on blocklists in Belgium (2021-04-21), Poland (2020-03-30), France (ANJ, 2021-07-26).",
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "UK status from Wikipedia https://en.wikipedia.org/wiki/Stake_(online_casino). Exact list not verified: fetch terms in a browser."
+  },
+  "paymentMethods": {
+   "value": {
+    "crypto": "Deposit to address from wallet/exchange; 21 coins for withdrawal including BTC, ETH, USDT, SOL; Swap Connect/Mesh linked wallet; buy via Moonpay/Swapped",
+    "fiat": "Visa/Mastercard in selected local currencies; bank transfer (up to 24h)"
+   },
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "Third-party summary of Stake Help Center."
+  },
+  "welcomeBonus": {
+   "value": "Headline welcome offer per Help Center: 3.5% rakeback of house edge unlocked with affiliate code; deposit must be wagered 100% before withdrawal; terms state no wagering multiplier, max bet or max cash-out; unclaimed bonuses may be cancelled after claim period or 60 days (clause 12.10)",
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "Varies by region/affiliate code; live offer not seen directly. Terms URL: https://stake.com/policies/terms"
+  },
+  "minDepositWithdrawal": {
+   "value": {
+    "deposit": "No figure in terms (clause 7.8); crypto under $0.01 not auto-processed",
+    "withdrawal": "Per-coin minimum, e.g. BTC 0.00002504, USDT 2.5, ETH 0.001; no max for crypto per Help Center; fees conflict between terms (discretionary) and blog (free)"
+   },
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07"
+  },
+  "responsibleGamblingTools": {
+   "value": [
+    "Daily deposit limit",
+    "Loss and wager limits (day/week/month)",
+    "Self-exclusion (indefinite, min 6 months)",
+    "Product exclusion (casino or sports, 24h to indefinite)",
+    "Break in Play 1 day/1 week/1 month"
+   ],
+   "source": "https://www.degenowl.com/reviews/stake-casino-review",
+   "checked": "2026-11-07",
+   "note": "No reality check or session limit found per review."
+  },
+  "notableFacts": {
+   "value": [
+    "Official betting partner of UFC from 2022; Everton FC front-of-shirt from 2022-23, sleeve sponsor 2026-27; sponsored Sauber F1 in 2024 and 2025 (Wikipedia)",
+    "UK Gambling Commission warned Everton in Feb 2025 that club officers may be liable for promoting an unlicensed business (Wikipedia)",
+    "TGP Europe (ran stake.uk.com): GBP 316,250 penalty announced 2023-04-05; surrendered UK licence 2025-05-16 after GBP 3.3m penalty (degenowl, citing UKGC)",
+    "No fine found against Medium Rare N.V. on Curaçao, UKGC or MGA enforcement registers as of 2026-09-14 (degenowl)",
+    "2025-12-31 class action naming Sweepsteaks Ltd (Stake.us); 2026-07-30 ruling sent a dispute to arbitration (Wikipedia)"
+   ],
+   "source": "https://en.wikipedia.org/wiki/Stake_(online_casino)",
+   "checked": "2026-11-07",
+   "note": "Secondary sources; second source https://www.degenowl.com/reviews/stake-casino-review"
+  }
+ },
+ {
+  "operator": "BC.Game",
+  "domain": "bc.game",
+  "legalName": {
+   "value": "Twocent Technology Limited",
+   "source": "https://bc.game/",
+   "checked": "2026-11-07",
+   "note": "Stated on bc.game homepage ('operated by Twocent Technology Limited'), fetched by curl 2026-11-07. Terms pages are JS-rendered and could not be read directly; address from general terms in BC whitepaper https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions: Sea Urchin Street #2, San Pedro, Ambergris Caye, Belize"
+  },
+  "companyRegistration": {
+   "value": "Belize, 41939",
+   "source": "https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions",
+   "checked": "2026-11-07",
+   "note": "Whitepaper-hosted T&C, not necessarily the current live terms; not checked against Belize registry."
+  },
+  "ownerGroup": {
+   "value": null,
+   "source": "https://next.io/news/casino/curacao-gambling-regulator-revoke-bc-game-licence/",
+   "checked": "2026-11-07",
+   "note": "not verified: no ultimate owner/parent stated in operator pages; earlier operator entity Small House B.V. (Curaçao) was declared bankrupt Nov 2024, disputed by BC.Game"
+  },
+  "launchYear": {
+   "value": 2017,
+   "source": "https://bc.game/",
+   "checked": "2026-11-07",
+   "note": "Homepage says 'running since 2017'."
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "Government of the Autonomous Island of Anjouan, Union of Comoros (Anjouan Gaming Authority)",
+     "licenceNumber": "ALSI-202410011-FI1",
+     "licenceHolder": "Twocent Technology Limited",
+     "verifyUrl": "https://anjouangaming.com/license-register/",
+     "status": "Homepage cites this number. Third-party register mirror reports Active as of 2026-11-06, expiry 2027-10-01. Official register page loads empty for our fetcher, so not confirmed directly."
+    },
+    {
+     "regulator": "Curaçao (old regime)",
+     "licenceNumber": "OGL/2023/118/0060",
+     "licenceHolder": "Small House B.V.",
+     "verifyUrl": null,
+     "status": "Reported revoked; GCB announced intent to revoke 2024-11-26; BC.Game says it no longer needs it. Not shown in current homepage text."
+    }
+   ],
+   "source": "https://app.igregulator.io/brands/bc.game",
+   "checked": "2026-11-07",
+   "note": "Anjouan from bc.game homepage; status/expiry from igregulator.io (third party). Curaçao licence is NOT the one shown now."
+  },
+  "restrictedCountries": {
+   "value": "Terms s5.2: Aruba, Bonaire, Curaçao, France, Netherlands, Saba, Statia, St. Martin, USA. UK closed Dec 2024 (BC.Game parted with TGP Europe).",
+   "source": "https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions",
+   "checked": "2026-11-07",
+   "note": "Whitepaper copy of terms; live terms page is JS-only. Homepage says restricted regions cannot open an account. UK: https://next.io/news/casino/bc-game-closes-uk-site/ (search snippet only)."
+  },
+  "paymentMethods": {
+   "value": {
+    "crypto": "Bitcoin, Ethereum, USDT, DOGE, TRX, XRP and other coins",
+    "fiat": "Card purchase of crypto inside the site; no other fiat listed on homepage"
+   },
+   "source": "https://bc.game/",
+   "checked": "2026-11-07",
+   "note": "Full coin list is in the app, not verified."
+  },
+  "welcomeBonus": {
+   "value": null,
+   "source": "https://bc.game/promotions/promotion",
+   "checked": "2026-11-07",
+   "note": "not verified: bonus pages are JS-rendered; third-party sites contradict each other (470% to $1,600 + 400 spins; 380% to $4,000; 300% to $20,000; wagering from 10x to 45x). Offer varies by region and promo code. Terms URL: https://bc.game/promotions/promotion"
+  },
+  "minDepositWithdrawal": {
+   "value": null,
+   "source": "https://bc.game/",
+   "checked": "2026-11-07",
+   "note": "not verified: not stated on pages accessible without JavaScript"
+  },
+  "responsibleGamblingTools": {
+   "value": [
+    "Self-exclusion and limit tools in account settings",
+    "18+ only"
+   ],
+   "source": "https://bc.game/",
+   "checked": "2026-11-07",
+   "note": "Homepage text only; specific limit types not verified."
+  },
+  "notableFacts": {
+   "value": [
+    "Leicester City shirt sponsor; UKGC raised concerns with club Feb 2025 (search snippets, agbrief/next.io)",
+    "2024-11-26: Curaçao GCB reported to intend revoking Small House B.V. licence after a Curaçao court declared Small House bankrupt; BC.Game disputes liability (next.io)",
+    "Curaçao licence OGL/2023/118/0060 reported revoked (igregulator.io)"
+   ],
+   "source": "https://next.io/news/casino/curacao-gambling-regulator-revoke-bc-game-licence/",
+   "checked": "2026-11-07",
+   "note": "Outcomes after Nov 2024 not verified."
+  }
+ },
+ {
+  "operator": "BitStarz",
+  "domain": "bitstarz.com",
+  "legalName": {
+   "value": "Gareton B.V.",
+   "source": "https://bitstarz.com/terms",
+   "checked": "2026-11-07",
+   "note": "Terms s1.2, fetched 2026-11-07. Registered office: Landhuis Zuikertuin at Zuikertuintjeweg z/n, Willemstad, Curaçao."
+  },
+  "companyRegistration": {
+   "value": "Curaçao, 160656",
+   "source": "https://bitstarz.com/terms",
+   "checked": "2026-11-07",
+   "note": "Not checked against Curaçao registry."
+  },
+  "ownerGroup": {
+   "value": null,
+   "source": "https://bitstarz.com/",
+   "checked": "2026-11-07",
+   "note": "not verified: no parent group stated; homepage says previously operated by Dama N.V."
+  },
+  "launchYear": {
+   "value": 2014,
+   "source": "https://bitstarz.com/",
+   "checked": "2026-11-07",
+   "note": "Homepage: 'founded in 2014'."
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "Curaçao Gaming Authority (CGA)",
+     "licenceNumber": "OGL/2024/165/0185",
+     "licenceHolder": "Gareton B.V.",
+     "verifyUrl": null,
+     "status": "Stated in terms s1.2 and homepage; homepage says it moved from Dama N.V. to Gareton B.V.'s own licence after the Curaçao reform. CGA register not checked."
+    }
+   ],
+   "source": "https://bitstarz.com/terms",
+   "checked": "2026-11-07",
+   "note": "Register entry not verified."
+  },
+  "restrictedCountries": {
+   "value": "Terms s3.6 bans real-money play from: USA, Puerto Rico, UK (and territories), Isle of Man, Jersey, Gibraltar, Spain, France (+ overseas), Netherlands, Belgium, Greece, Lithuania, Slovakia, Czech Republic, Portugal, Hungary, Bulgaria, Latvia, Estonia, Poland, Romania, Cyprus, Liechtenstein, Serbia, Georgia, Ukraine, Belarus, Russia, Brazil, Israel, Curaçao and about 40 others. Welcome package also excluded for SI, HR, BA, MK, ME, AT, XK, FI (bonus terms s3.2.2).",
+   "source": "https://bitstarz.com/terms",
+   "checked": "2026-11-07",
+   "note": "Full list in source. Bonus terms: https://bitstarz.com/bonus-terms-and-conditions"
+  },
+  "paymentMethods": {
+   "value": {
+    "crypto": "Deposit: BTC (incl. Lightning), ETH, SOL, USDT (TRC-20/ERC-20), USDC, LTC, DOGE, BCH, XRP, TRX, BNB, ADA; cash out in BTC, ETH, LTC, USDT, DOGE, BCH",
+    "fiat": "Visa and Mastercard; Buy Crypto tab"
+   },
+   "source": "https://bitstarz.com/",
+   "checked": "2026-11-07"
+  },
+  "welcomeBonus": {
+   "value": {
+    "headline": "Up to EUR 500 or 5 BTC plus 180 free spins over four deposits",
+    "structure": "1st 100% up to EUR100/1 BTC + 180 spins; 2nd 50% up to EUR100; 3rd 50% up to EUR200; 4th 100% up to EUR100",
+    "wagering": "40x bonus; free-spin winnings 40x",
+    "minDeposit": "$20 per promotions page",
+    "maxBet": "5 EUR/USD (0.00006 BTC) while bonus active",
+    "expiry": "welcome package bonuses valid 7 days; free spins must be opened within 1 day",
+    "termsUrl": "https://bitstarz.com/bonus-terms-and-conditions"
+   },
+   "source": "https://bitstarz.com/bonus-terms-and-conditions",
+   "checked": "2026-11-07",
+   "note": "Pages are internally inconsistent: homepage says spins over 9 days, terms say 8 days; promotions page lists amounts in USD ($100/$200, min $20) and BTC (1/1/2/1 BTC). Varies by country."
+  },
+  "minDepositWithdrawal": {
+   "value": {
+    "deposit": "0.0001 BTC (homepage); $20 minimum to qualify for welcome match (promotions page)",
+    "withdrawal": "No daily/monthly limits, per-transaction limits apply; most crypto cashouts approved in ~3 minutes; every deposit must be wagered 1x before withdrawal (terms s9.9)"
+   },
+   "source": "https://bitstarz.com/",
+   "checked": "2026-11-07"
+  },
+  "responsibleGamblingTools": {
+   "value": [
+    "Deposit, loss, wager and session limits; cooling-off break; self-exclusion under Limits in account (homepage)",
+    "Play Safe page: self-exclusion by contacting support, links to GamCare, GordonHouse, Gam-Anon"
+   ],
+   "source": "https://bitstarz.com/play-safe",
+   "checked": "2026-11-07",
+   "note": "Homepage claims account-level limits; Play Safe page describes only support-based self-exclusion."
+  },
+  "notableFacts": {
+   "value": null,
+   "source": "https://bitstarz.com/",
+   "checked": "2026-11-07",
+   "note": "not verified: no sourced regulatory actions found in this pass"
+  }
+ }
+]

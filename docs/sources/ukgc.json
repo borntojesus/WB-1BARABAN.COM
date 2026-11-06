@@ -1,0 +1,461 @@
+[
+ {
+  "slug": "leovegas",
+  "legalName": {
+   "value": "LeoVegas Gaming PLC",
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39198",
+   "checked": "2026-11-07",
+   "note": "UKGC licence holder; Sliema, Malta head office"
+  },
+  "companyRegistration": {
+   "value": "C59314 (Malta)",
+   "source": "https://www.spelinspektionen.se/globalassets/dokument/ovriga-dokument/beslut/avskrivningar/leovegas-gaming-plc---beslut-om-avskrivning-registrering-av-spelare-identifiering-av-spelare-spelkonton-spelpaus.se.pdf",
+   "checked": "2026-11-07",
+   "note": "From Swedish Gambling Authority decision; UKGC page shows no company number"
+  },
+  "ownerGroup": {
+   "value": "MGM Resorts International (acquired via 2022 offer, ~$607M)",
+   "source": "https://en.wikipedia.org/wiki/LeoVegas",
+   "checked": "2026-11-07",
+   "note": "Wikipedia: subsidiary of MGM Resorts; exact completion date not verified (approvals by 7 Sep 2022)"
+  },
+  "launchYear": {
+   "value": 2011,
+   "source": "https://en.wikipedia.org/wiki/LeoVegas",
+   "checked": "2026-11-07",
+   "note": "Sources conflict: Wikipedia 2011, group says 2012; UKGC casino licence active from 1 Nov 2014"
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "UKGC",
+     "licenceNumber": "39198 (ref 039198-R-319450-029)",
+     "licenceHolder": "LeoVegas Gaming PLC",
+     "verifyUrl": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39198",
+     "status": "Active: casino (from 1 Nov 2014), bingo (26 Feb 2018), general betting real event (29 Apr 2016), virtual event (23 Apr 2025)"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39198",
+   "checked": "2026-11-07",
+   "note": "MGA licence not checked"
+  },
+  "gbDomains": {
+   "value": {
+    "active": [
+     "leovegas.co.uk",
+     "pinkcasino.co.uk",
+     "slotboss.co.uk",
+     "betmgm.co.uk",
+     "21.co.uk",
+     "betuk.com"
+    ],
+    "inactive": [
+     "leovegas.com",
+     "bingos.co.uk"
+    ]
+   },
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/domain-names/39198",
+   "checked": "2026-11-07",
+   "note": "leovegas.com is Inactive for GB on the UKGC register; GB site is leovegas.co.uk"
+  },
+  "verticals": {
+   "value": [
+    "casino",
+    "bingo",
+    "sportsbook (general betting)"
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39198",
+   "checked": "2026-11-07",
+   "note": "Live casino/poker not verifiable from register"
+  },
+  "paymentMethods": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: leovegas.co.uk returned HTTP 403 to fetch"
+  },
+  "welcomeBonus": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: operator site blocked/inconsistent; only affiliate sources"
+  },
+  "wageringCapRule": {
+   "value": "UK cap: wagering on incentives max 10x from 19 Jan 2026; deposit balance exempt",
+   "source": "https://www.gamblingcommission.gov.uk/news/article/gambling-promotions-to-be-safer-and-simpler",
+   "checked": "2026-11-07",
+   "note": "Regulator rule, not operator-specific"
+  },
+  "withdrawalInfo": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: operator site blocked"
+  },
+  "responsibleGamblingTools": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: operator site blocked"
+  },
+  "regulatoryActions": {
+   "value": [
+    {
+     "year": 2022,
+     "decisionDate": "2022-08-03",
+     "amount": "GBP 1.32m (~1.3m)",
+     "type": "financial penalty, official warning, audit; AML and social responsibility"
+    },
+    {
+     "year": 2021,
+     "amount": "GBP 600,000",
+     "type": "advertising and self-exclusion failings (LeoVegas Gaming Ltd)",
+     "source": "https://en.wikipedia.org/wiki/LeoVegas"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/news/article/online-operator-leovegas-fined-gbp1-2-million",
+   "checked": "2026-11-07",
+   "note": "2021 item from Wikipedia/search snippet, Commission page https://www.gamblingcommission.gov.uk/news/article/leovegas-penalised-for-advertising-and-marketing-failings; register page for 39198 shows 0 actions (older entity)"
+  }
+ },
+ {
+  "slug": "mr-green",
+  "legalName": {
+   "value": "Mr Green Limited (former UKGC licence holder; no longer licensed)",
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+   "checked": "2026-11-07",
+   "note": "Head office Sliema, Malta"
+  },
+  "companyRegistration": {
+   "value": null,
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+   "checked": "2026-11-07",
+   "note": "not verified: UKGC page shows no company number; Malta registry not checked"
+  },
+  "ownerGroup": {
+   "value": "Evoke plc (via William Hill, bought Mr Green Jan 2019 for GBP 242m)",
+   "source": "https://en.wikipedia.org/wiki/Mr_Green_(company)",
+   "checked": "2026-11-07",
+   "note": "Premise that Mr Green was sold by William Hill/888 not verified; sources show it is still Evoke/William Hill group. Wikipedia only, no Evoke primary source fetched"
+  },
+  "launchYear": {
+   "value": 2008,
+   "source": "https://en.wikipedia.org/wiki/Mr_Green_(company)",
+   "checked": "2026-11-07",
+   "note": "Wikipedia fetch said company founded 2007; brand/site launch year not confirmed. UKGC casino licence from 1 Nov 2014"
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "UKGC",
+     "licenceNumber": "39264 (ref 039264-R-319432-020)",
+     "licenceHolder": "Mr Green Limited",
+     "verifyUrl": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+     "status": "SURRENDERED 28 Oct 2024 (casino from 1 Nov 2014, bingo from 7 Jul 2017)"
+    },
+    {
+     "regulator": "MGA/DGA/SGA",
+     "licenceNumber": null,
+     "licenceHolder": null,
+     "verifyUrl": "https://www.mrgreen.com/en/responsible-gaming/",
+     "status": "mrgreen.com page lists MGA, DGA, SGA licences; numbers not captured"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+   "checked": "2026-11-07",
+   "note": "KEY FINDING: Mr Green holds no UKGC licence since Oct 2024; mrgreen.co.uk not on any UKGC register domain list checked. Not suitable as a UKGC-licensed operator in a GB table"
+  },
+  "verticals": {
+   "value": null,
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39264",
+   "checked": "2026-11-07",
+   "note": "not verified: UK market closed; former licence covered casino and bingo"
+  },
+  "paymentMethods": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: no GB offering; UK licence surrendered"
+  },
+  "welcomeBonus": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: no GB offering; UK licence surrendered"
+  },
+  "wageringCapRule": {
+   "value": "UK cap: wagering on incentives max 10x from 19 Jan 2026; deposit balance exempt",
+   "source": "https://www.gamblingcommission.gov.uk/news/article/gambling-promotions-to-be-safer-and-simpler",
+   "checked": "2026-11-07",
+   "note": "Regulator rule, not operator-specific"
+  },
+  "withdrawalInfo": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: no GB offering"
+  },
+  "responsibleGamblingTools": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: mrgreen.com RG page did not name tools"
+  },
+  "regulatoryActions": {
+   "value": [
+    {
+     "year": 2020,
+     "decisionDate": "2020-02-27",
+     "amount": "GBP 3m",
+     "type": "regulatory settlement, AML and social responsibility"
+    },
+    {
+     "year": 2023,
+     "decisionDate": "2023-03-28",
+     "amount": "GBP 3.75m incl. GBP 218,310 divestment",
+     "type": "payment in lieu of penalty (William Hill group package)",
+     "source": "https://www.gamblingcommission.gov.uk/news/article/william-hill-group-businesses-to-pay-record-gbp19-2m-for-failures"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/news/article/mr-green-to-pay-gbp3-million-for-regulatory-failures",
+   "checked": "2026-11-07",
+   "note": "2023 amount from search snippet of Commission pages, page not fetched; register actions tab for 39264 shows none"
+  }
+ },
+ {
+  "slug": "888casino",
+  "legalName": {
+   "value": "888 UK Limited",
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+   "checked": "2026-11-07",
+   "note": "Head office 601-701 Europort, Gibraltar"
+  },
+  "companyRegistration": {
+   "value": null,
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+   "checked": "2026-11-07",
+   "note": "not verified: UKGC page shows no company number; Gibraltar registry not checked"
+  },
+  "ownerGroup": {
+   "value": "Evoke plc (formerly 888 Holdings, renamed 2024)",
+   "source": "https://en.wikipedia.org/wiki/888casino",
+   "checked": "2026-11-07",
+   "note": "Secondary source"
+  },
+  "launchYear": {
+   "value": 1997,
+   "source": "https://en.wikipedia.org/wiki/888casino",
+   "checked": "2026-11-07",
+   "note": "1997 = original Casino-on-Net; 888casino name since ~2010; UKGC casino licence from 1 Nov 2014"
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "UKGC",
+     "licenceNumber": "39028 (ref 039028-R-319297-014)",
+     "licenceHolder": "888 UK Limited",
+     "verifyUrl": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+     "status": "Active: casino, bingo, general betting real event (all from 1 Nov 2014), virtual event (16 Apr 2020)"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+   "checked": "2026-11-07",
+   "note": "Gibraltar licence not checked"
+  },
+  "gbDomains": {
+   "value": "888casino.com Active (90 domains total)",
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/domain-names/39028",
+   "checked": "2026-11-07"
+  },
+  "verticals": {
+   "value": [
+    "casino",
+    "bingo",
+    "sportsbook (888sport)"
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39028",
+   "checked": "2026-11-07",
+   "note": "Poker/live casino not verified on register"
+  },
+  "paymentMethods": {
+   "value": null,
+   "source": "https://www.888casino.com/",
+   "checked": "2026-11-07",
+   "note": "not verified: page fetch truncated; footer not captured"
+  },
+  "welcomeBonus": {
+   "value": null,
+   "source": "https://www.888casino.com/promotions/",
+   "checked": "2026-11-07",
+   "note": "not verified: page fetched showed EUR offer (100% up to EUR 500 + 100 free spins), not confirmed as GB; no wagering shown"
+  },
+  "wageringCapRule": {
+   "value": "UK cap: wagering on incentives max 10x from 19 Jan 2026; deposit balance exempt",
+   "source": "https://www.gamblingcommission.gov.uk/news/article/gambling-promotions-to-be-safer-and-simpler",
+   "checked": "2026-11-07",
+   "note": "Regulator rule, not operator-specific"
+  },
+  "withdrawalInfo": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: not captured"
+  },
+  "responsibleGamblingTools": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: not captured"
+  },
+  "regulatoryActions": {
+   "value": [
+    {
+     "year": 2022,
+     "decisionDate": "2022-03-01",
+     "amount": "GBP 9.4m (9,409,756.48)",
+     "type": "fine, SR and AML"
+    },
+    {
+     "year": 2024,
+     "decisionDate": "2024-08-19",
+     "amount": "GBP 23,000",
+     "type": "credit card condition"
+    },
+    {
+     "year": 2025,
+     "decisionDate": "2025-08-07",
+     "amount": "GBP 33,075",
+     "type": "SRCP 3.9.1",
+     "source": "https://www.gamblingcommission.gov.uk/public-register/regulatory-action/detail/272"
+    },
+    {
+     "year": 2025,
+     "decisionDate": "2025-11-18",
+     "amount": "GBP 86,843",
+     "type": "self-exclusion SRCP 3.5.3"
+    },
+    {
+     "year": 2017,
+     "amount": "GBP 7.8m",
+     "type": "vulnerable customers package"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/news/article/gbp9-4m-fine-for-online-operator-888",
+   "checked": "2026-11-07",
+   "note": "Register actions tab lists the three 2024-25 penalties: https://www.gamblingcommission.gov.uk/public-register/business/detail/actions/39028"
+  }
+ },
+ {
+  "slug": "betway",
+  "legalName": {
+   "value": "Betway Limited",
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39372",
+   "checked": "2026-11-07",
+   "note": "Head office 9 Empire Stadium Street, Gzira, Malta"
+  },
+  "companyRegistration": {
+   "value": "C39710 (Malta)",
+   "source": "https://opencorporates.com/companies/mt/C39710",
+   "checked": "2026-11-07",
+   "note": "From OpenCorporates search listing; not confirmed against Malta registry"
+  },
+  "ownerGroup": {
+   "value": "Super Group (SGHC) Limited",
+   "source": "https://en.wikipedia.org/wiki/Betway",
+   "checked": "2026-11-07",
+   "note": "Wikipedia; NYSE listed SGHC since Jan 2022"
+  },
+  "launchYear": {
+   "value": 2006,
+   "source": "https://en.wikipedia.org/wiki/Betway",
+   "checked": "2026-11-07",
+   "note": "Brand vs company date ambiguity; UKGC licences from 1 Nov 2014"
+  },
+  "licences": {
+   "value": [
+    {
+     "regulator": "UKGC",
+     "licenceNumber": "39372 (ref 039372-R-319367-029)",
+     "licenceHolder": "Betway Limited",
+     "verifyUrl": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39372",
+     "status": "Active: casino (1 Nov 2014), general betting real event (1 Nov 2014), virtual event (9 Jun 2017)"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39372",
+   "checked": "2026-11-07",
+   "note": "MGA licence not checked"
+  },
+  "gbDomains": {
+   "value": {
+    "active": [
+     "betway.com",
+     "casino.betway.com",
+     "sports.betway.com",
+     "vegas.betway.com",
+     "inplay.betway.com",
+     "jackpotcity.co.uk",
+     "jackpotcitycasino.co.uk",
+     "spincasino.co.uk"
+    ],
+    "whiteLabel": [
+     "hippodromeonline.com"
+    ]
+   },
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/domain-names/39372",
+   "checked": "2026-11-07",
+   "note": "Trading names: betway, hippodrome online, jackpot city, spin casino"
+  },
+  "verticals": {
+   "value": [
+    "casino",
+    "sportsbook (general betting)"
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-register/business/detail/39372",
+   "checked": "2026-11-07",
+   "note": "No bingo or poker licence on register (dream bingo inactive)"
+  },
+  "paymentMethods": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: betway.com returned HTTP 403"
+  },
+  "welcomeBonus": {
+   "value": null,
+   "source": "https://www.gambling.com/uk/online-casinos/reviews/betway",
+   "checked": "2026-11-07",
+   "note": "not verified: operator blocked; affiliate sources conflict (casino 100% to GBP 50, wagering quoted 10x/40x/50x)"
+  },
+  "wageringCapRule": {
+   "value": "UK cap: wagering on incentives max 10x from 19 Jan 2026; deposit balance exempt",
+   "source": "https://www.gamblingcommission.gov.uk/news/article/gambling-promotions-to-be-safer-and-simpler",
+   "checked": "2026-11-07",
+   "note": "Regulator rule, not operator-specific"
+  },
+  "withdrawalInfo": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: operator blocked"
+  },
+  "responsibleGamblingTools": {
+   "value": null,
+   "source": null,
+   "checked": "2026-11-07",
+   "note": "not verified: operator blocked"
+  },
+  "regulatoryActions": {
+   "value": [
+    {
+     "year": 2020,
+     "decisionDate": "2020-03-12",
+     "amount": "GBP 11.6m (5.8m in lieu of penalty + 5.8m divested)",
+     "type": "VIP, SR and AML failings"
+    }
+   ],
+   "source": "https://www.gamblingcommission.gov.uk/public-and-players/guide/page/betway-to-pay-gbp11-6m-for-failings-linked-to-vip-customers",
+   "checked": "2026-11-07",
+   "note": "Public statement: https://www.gamblingcommission.gov.uk/public-register/public-statement/detail/betway-public-statement ; register actions tab shows 0"
+  }
+ }
+]
