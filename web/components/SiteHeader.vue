@@ -45,7 +45,6 @@ watch(() => route.path, () => {
 
       <div class="header-actions">
         <NuxtLink to="/methodology" class="header-link mono">methodology</NuxtLink>
-        <ThemeToggle />
         <button
           class="mobile-menu-btn"
           type="button"

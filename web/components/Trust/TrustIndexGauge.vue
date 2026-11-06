@@ -270,8 +270,8 @@ function toggleExpanded() {
 .tig-method:hover { color: var(--accent-primary); }
 .tig-dot { margin: 0 4px; color: var(--text-tertiary); }
 .tig-bar { display: flex; align-items: center; gap: var(--space-3); width: 100%; }
-.tig-bar-track { flex: 1; height: 10px; background: var(--bg-tertiary); border-radius: 999px; overflow: hidden; position: relative; }
-.tig-bar-fill { display: block; height: 100%; width: 0%; border-radius: 999px; transition: width 1.2s cubic-bezier(0.2, 0.6, 0.2, 1); }
+.tig-bar-track { flex: 1; height: 10px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden; position: relative; }
+.tig-bar-fill { display: block; height: 100%; width: 0%; border-radius: 4px; transition: width 1.2s cubic-bezier(0.2, 0.6, 0.2, 1); }
 .tig-bar-master .tig-bar-track { height: 12px; }
 .tig-bar-value { font-family: var(--font-mono); font-size: 13px; font-weight: 600; white-space: nowrap; min-width: 56px; text-align: right; }
 .tig-meta-line { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); flex-wrap: wrap; }
@@ -291,18 +291,18 @@ function toggleExpanded() {
 .tig-bar-sub .tig-bar-track { height: 8px; }
 .tig-sub-score { font-family: var(--font-mono); font-size: 14px; font-weight: 600; margin: 0; min-width: 36px; text-align: right; }
 .tig-sub-info-cell { margin: 0; display: flex; align-items: center; }
-.tig-info { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; border: 0; background: transparent; color: var(--text-tertiary); cursor: pointer; text-decoration: none; transition: box-shadow 0.18s ease, color 0.18s ease, background 0.18s ease; }
+.tig-info { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; border: 0; background: transparent; color: var(--text-tertiary); cursor: pointer; text-decoration: none; transition: box-shadow 0.18s ease, color 0.18s ease, background 0.18s ease; }
 .tig-info:hover, .tig-info:focus-visible { color: var(--accent-primary); background: var(--bg-tertiary); box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.18); outline: none; }
 .tig-footer { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5) 0 var(--space-2); font-size: 13px; color: var(--text-secondary); }
 .tig-delta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.tig-delta-pill { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: 600; font-size: 12px; padding: 2px 8px; border-radius: 999px; }
+.tig-delta-pill { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: 600; font-size: 12px; padding: 2px 8px; border-radius: 4px; }
 .tig-delta-up { color: var(--accent-success); background: var(--accent-success-soft); }
 .tig-delta-down { color: var(--accent-danger); background: var(--accent-danger-soft); }
 .tig-delta-label { color: var(--text-tertiary); }
 .tig-changelog-link { display: inline-flex; align-items: center; gap: 3px; color: var(--accent-primary); text-decoration: none; transition: filter 0.18s ease; }
 .tig-changelog-link:hover { filter: brightness(1.2); }
 .tig-reviewer { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
-.tig-avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 999px; background: linear-gradient(135deg, var(--accent-primary), #4F8AFF); color: #fff; font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-decoration: none; flex-shrink: 0; }
+.tig-avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 4px; background: linear-gradient(135deg, var(--accent-primary), #4F8AFF); color: #fff; font-family: var(--font-mono); font-size: 12px; font-weight: 600; text-decoration: none; flex-shrink: 0; }
 .tig-reviewer-meta { font-size: 13px; color: var(--text-secondary); }
 .tig-reviewer-creds { color: var(--text-tertiary); }
 .tig-chip { display: inline-block; width: 100%; max-width: 360px; }

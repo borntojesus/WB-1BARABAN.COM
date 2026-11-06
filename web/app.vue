@@ -21,11 +21,6 @@ useSchemaOrg([
   }),
 ])
 
-// Initialise theme on mount (no SSR flash because layout sets data-theme on html via cookie)
-onMounted(() => {
-  const { initTheme } = useTheme()
-  initTheme()
-})
 </script>
 
 <template>

@@ -74,7 +74,7 @@ function handleConfirm() {
   width: 64px;
   height: 64px;
   background: var(--accent-primary-soft);
-  border-radius: 999px;
+  border-radius: 4px;
   margin: 0 auto var(--space-5);
 }
 .age-title {

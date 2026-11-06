@@ -129,7 +129,7 @@ onMounted(() => {
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: linear-gradient(135deg, var(--accent-primary) 0%, #4F8AFF 100%);
   color: #fff;
   box-shadow: 0 8px 24px rgba(124, 92, 255, 0.4), 0 1px 2px rgba(0,0,0,0.4);
@@ -231,7 +231,7 @@ onMounted(() => {
 .ai-thinking .dot {
   width: 6px;
   height: 6px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: var(--text-tertiary);
   animation: dot-pulse 1.2s var(--ease-in-out) infinite;
 }

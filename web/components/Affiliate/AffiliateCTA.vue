@@ -98,7 +98,7 @@ const showTooltip = ref(false)
   justify-content: center;
   width: 26px;
   height: 26px;
-  border-radius: 999px;
+  border-radius: 4px;
   color: var(--text-tertiary);
   background: transparent;
   cursor: help;
