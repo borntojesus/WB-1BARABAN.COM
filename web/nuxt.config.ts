@@ -55,7 +55,7 @@ export default defineNuxtConfig({
 
   nitro: {
     compressPublicAssets: true,
-    preset: "netlify",
+    preset: "netlify_static",
     prerender: {
       failOnError: false,
     },
