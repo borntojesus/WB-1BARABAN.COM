@@ -5,6 +5,12 @@ import { operators } from "./data/operators";
 // direct gtag.js tag, so it is not counted twice.
 const GTM_ID = "GTM-KW7J287K";
 
+// Consent Mode v2 defaults, before the GTM loader: denied in the EEA, UK and Switzerland
+// until the visitor chooses in the banner (public/scripts/consent.js), granted elsewhere,
+// then a stored choice is replayed.
+const CONSENT_KEY = "1baraban-consent";
+const consentDefault = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH'],wait_for_update:500});gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});try{var c=JSON.parse(localStorage.getItem('${CONSENT_KEY}')||'null');if(c&&c.v===1){var s=c.analytics?'granted':'denied';gtag('consent','update',{ad_storage:s,ad_user_data:s,ad_personalization:s,analytics_storage:s});}}catch(e){}`;
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-12-01",
@@ -38,10 +44,16 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          key: "consent-default",
+          tagPriority: "critical",
+          innerHTML: consentDefault,
+        },
+        {
           key: "gtm",
           tagPriority: "critical",
           innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
         },
+        { key: "consent-banner", src: "/scripts/consent.js", defer: true },
       ],
       noscript: [
         {

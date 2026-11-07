@@ -35,6 +35,7 @@ const year = new Date().getFullYear()
           <NuxtLink to="/affiliate-disclosure" class="footer-link">Affiliate disclosure</NuxtLink>
           <NuxtLink to="/responsible-gambling" class="footer-link">Responsible gambling</NuxtLink>
           <NuxtLink to="/privacy" class="footer-link">Privacy</NuxtLink>
+          <button type="button" class="footer-link footer-button" data-consent-open>Cookie settings</button>
         </div>
 
         <div class="footer-col">
@@ -110,6 +111,14 @@ const year = new Date().getFullYear()
   transition: color var(--duration-fast) var(--ease-out);
 }
 .footer-link:hover { color: var(--accent-primary); }
+.footer-button {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+}
 .footer-bottom {
   display: flex;
   justify-content: space-between;

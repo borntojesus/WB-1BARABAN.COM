@@ -10,14 +10,17 @@ useSchemaOrg([
 
 <template>
   <ComplianceProsePage eyebrow="Privacy" title="Privacy notice" lead="1baraban is a static website. We measure visits with Google Analytics 4, which sets analytics cookies. We run no ads and keep no accounts.">
+    <p class="pp-meta">Last updated 7 November 2026</p>
+
     <h2>What stays in your browser</h2>
-    <p>When you confirm you are 18+, your browser stores a single local value (localStorage) so we do not ask again. It never leaves your device and we cannot read it. Clear your site data to remove it.</p>
+    <p>When you confirm you are 18+, your browser stores a single local value (localStorage) so we do not ask again. Your cookie choice is kept the same way. Neither leaves your device and we cannot read them. Clear your site data to remove them.</p>
 
     <h2>Analytics</h2>
     <p>We use Google Analytics 4, loaded through Google Tag Manager, to count visits and see which pages are read. It records things like the pages you view, your approximate location, your device and browser, and how you reached the site. Google processes this data for us; see the <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google privacy policy</a>.</p>
 
-    <h2>Cookies</h2>
-    <p>Google Analytics sets two first party cookies, <code>_ga</code> and <code>_ga_THSBBY8Y7C</code>, which tell visits apart and last up to two years. We set no advertising cookies. You can block or delete cookies in your browser settings, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt-out add-on</a>. The site works the same without them.</p>
+    <h2 id="cookies">Cookies and your choice</h2>
+    <p>With your consent Google Analytics sets two first party cookies, <code>_ga</code> and <code>_ga_THSBBY8Y7C</code>, which tell visits apart and last up to two years. We set no advertising cookies.</p>
+    <p>Visitors in the UK, the EEA and Switzerland are asked first: until you press Accept in the cookie banner, no analytics cookies are set and Google receives only cookieless signals. Elsewhere measurement is on by default and the same banner lets you turn it off. You can change your choice at any time with <button type="button" class="pp-inline-button" data-consent-open>Cookie settings</button>, which is also in the footer of every page. You can also block or delete cookies in your browser settings, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt-out add-on</a>. The site works the same without them.</p>
 
     <h2>What we do not do</h2>
     <ul>
@@ -36,3 +39,16 @@ useSchemaOrg([
     <p>Under UK GDPR you can ask what personal data we hold, and ask for correction or deletion. We hold none beyond what you send us by email. Email <a href="mailto:editorial@1baraban.com">editorial@1baraban.com</a>. You can also complain to the <a href="https://ico.org.uk/" rel="noopener" target="_blank">Information Commissioner's Office</a>.</p>
   </ComplianceProsePage>
 </template>
+
+<style scoped>
+.pp-inline-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--accent-primary);
+  border-bottom: 1px solid var(--accent-primary-soft);
+  cursor: pointer;
+}
+.pp-inline-button:hover { border-bottom-color: var(--accent-primary); }
+</style>
