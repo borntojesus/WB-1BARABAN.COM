@@ -14,7 +14,7 @@ useSchemaOrg([
     <p>Each operator profile gathers facts such as licence, licence holder, owner, Great Britain availability and regulatory actions. Every fact shows its source and the date we checked it. Our baseline is Great Britain, with Ireland and Malta as secondary readers.</p>
 
     <h2>What this site is not</h2>
-    <p>It is not a testing lab. We have not played with real money or contacted support at any operator, so there are no scores or rankings. It is not an ad site: there are no ads and no AdSense, now or planned. There is no analytics and we set no cookies.</p>
+    <p>It is not a testing lab. We have not played with real money or contacted support at any operator, so there are no scores or rankings. It is not an ad site: there are no ads and no AdSense, now or planned. We measure visits with Google Analytics 4, which sets analytics cookies; the <NuxtLink to="/privacy">privacy notice</NuxtLink> explains what it collects.</p>
 
     <h2>How to read it</h2>
     <ul>

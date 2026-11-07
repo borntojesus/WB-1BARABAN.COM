@@ -1,6 +1,6 @@
 # 1baraban
 
-> Independent reference for online gambling operators. Facts are desk research from regulators' public registers and operators' own pages, each sourced and dated (first check 2026-11-07). We have not tested operators with real money, so there are no scores or rankings. No ads, no analytics, no tracking cookies. Baseline: Great Britain, with Ireland and Malta as secondary readers. 18+ only.
+> Independent reference for online gambling operators. Facts are desk research from regulators' public registers and operators' own pages, each sourced and dated (first check 2026-11-07). We have not tested operators with real money, so there are no scores or rankings. No ads. Visits are measured with Google Analytics 4 (analytics cookies only, no advertising cookies). Baseline: Great Britain, with Ireland and Malta as secondary readers. 18+ only.
 
 ## Key pages
 - [Reviews index](https://1baraban.com/reviews)
