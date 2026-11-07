@@ -1,8 +1,8 @@
 # Deploy: 1baraban.com
 
 - **Target:** Netlify, full static (`nuxi generate`, nitro preset `netlify_static`)
-- **Team:** `alpina` (CLI: `netlify switch --email borntojesus@gmail.com`, switch back to socialblasterx@gmail.com after)
-- **Site:** `1baraban` (site id: `1a0d34e9-863a-4890-bb55-7a264591c4db`, site name `1baraban`, team alpina (Pro), Netlify login borntojesus@gmail.com; domain 1baraban.com attached; the temporary 1baraban-com site in team borntojesus was deleted 2026-11-06)
+- **Team:** Dmytro Team (slug `dmytro-team`, owner borntojesus@gmail.com). Pass `NETLIFY_AUTH_TOKEN` per command; never `netlify switch`. The old free team is closing, never use it.
+- **Site:** project `1baraban` (site id `1a0d34e9-863a-4890-bb55-7a264591c4db`), domain 1baraban.com + www alias
 - **Prod URL:** https://1baraban.com (www.1baraban.com as alias)
 - **Previous host:** Vercel, project disabled (402 DEPLOYMENT_DISABLED) on 2026-11-06
 
@@ -21,7 +21,7 @@ and the link checker.
 
 ```sh
 # draft first (free plan: each prod deploy costs ~15 credits)
-netlify deploy --no-build --dir "$PWD/web/dist" --site <site-id>
+NETLIFY_AUTH_TOKEN=<token> netlify deploy --no-build --dir "$PWD/web/dist" --site <site-id>
 # then prod
 netlify deploy --prod --no-build --dir "$PWD/web/dist" --site <site-id>
 ```
@@ -49,3 +49,9 @@ logged-in CLI user (borntojesus@gmail.com) only sees team `alpina`. Note: team
 2026-11-07: finish pass (see docs/PLAN.md). Mock data replaced with sourced facts,
 hub/compare/authors/trust pages added. Draft verified; prod publish is a manual
 `netlify api restoreSiteDeploy` by Dmytro.
+
+2026-11-07: deploy ef087bc published to prod by Dmytro. Registry NS are
+howard/stella (Netlify records). The previous zone's NS (monroe/jay, pointing at
+Vercel) were cached by some resolvers with a 48h TTL, so a few ISPs may still
+show the old Vercel 404 until about 2026-11-08 21:00 UTC. Check with
+`curl --resolve 1baraban.com:443:75.2.60.5 https://1baraban.com/`.
