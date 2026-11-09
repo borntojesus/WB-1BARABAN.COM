@@ -127,6 +127,7 @@ export default defineNuxtConfig({
     "/methodology": { prerender: true },
     "/affiliate-disclosure": { prerender: true },
     "/responsible-gambling": { prerender: true },
+    "/contact": { prerender: true },
     "/reviews/**": { prerender: true },
     "/compare": { prerender: true },
     "/online-casinos": { prerender: true },

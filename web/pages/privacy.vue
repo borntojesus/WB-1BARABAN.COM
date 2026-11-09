@@ -10,7 +10,7 @@ useSchemaOrg([
 
 <template>
   <ComplianceProsePage eyebrow="Privacy" title="Privacy notice" lead="1baraban is a static website. We measure visits with Google Analytics 4, which sets analytics cookies. We run no ads and keep no accounts.">
-    <p class="pp-meta">Last updated 7 November 2026</p>
+    <p class="pp-meta">Last updated 9 November 2026</p>
 
     <h2>What stays in your browser</h2>
     <p>When you confirm you are 18+, your browser stores a single local value (localStorage) so we do not ask again. Your cookie choice is kept the same way. Neither leaves your device and we cannot read them. Clear your site data to remove them.</p>
@@ -22,10 +22,13 @@ useSchemaOrg([
     <p>With your consent Google Analytics sets two first party cookies, <code>_ga</code> and <code>_ga_THSBBY8Y7C</code>, which tell visits apart and last up to two years. We set no advertising cookies.</p>
     <p>Visitors in the UK, the EEA and Switzerland are asked first: until you press Accept in the cookie banner, no analytics cookies are set and Google receives only cookieless signals. Elsewhere measurement is on by default and the same banner lets you turn it off. You can change your choice at any time with <button type="button" class="pp-inline-button" data-consent-open>Cookie settings</button>, which is also in the footer of every page. You can also block or delete cookies in your browser settings, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt-out add-on</a>. The site works the same without them.</p>
 
+    <h2>Contact form</h2>
+    <p>Our <NuxtLink to="/contact">contact form</NuxtLink> sends your name, an optional email and your message to our own server (forms.antonyuk.org), protected by Cloudflare Turnstile. We keep the message only to reply to you and delete it within 12 months. Turnstile may process technical data such as your IP address and browser details under the <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener" target="_blank">Cloudflare privacy policy</a>.</p>
+
     <h2>What we do not do</h2>
     <ul>
       <li>No tracking pixels, no advertising cookies.</li>
-      <li>No accounts, forms or newsletters.</li>
+      <li>No accounts or newsletters. The contact form is the only form.</li>
       <li>No ads or AdSense.</li>
     </ul>
 
@@ -36,7 +39,7 @@ useSchemaOrg([
     <p>Operator and regulator sites you reach by clicking a link have their own cookies and privacy policies, which we do not control.</p>
 
     <h2>Your rights</h2>
-    <p>Under UK GDPR you can ask what personal data we hold, and ask for correction or deletion. We hold none beyond what you send us by email. Email <a href="mailto:editorial@1baraban.com">editorial@1baraban.com</a>. You can also complain to the <a href="https://ico.org.uk/" rel="noopener" target="_blank">Information Commissioner's Office</a>.</p>
+    <p>Under UK GDPR you can ask what personal data we hold, and ask for correction or deletion. We hold none beyond what you send us by email or through the contact form. Email <a href="mailto:editorial@1baraban.com">editorial@1baraban.com</a>. You can also complain to the <a href="https://ico.org.uk/" rel="noopener" target="_blank">Information Commissioner's Office</a>.</p>
   </ComplianceProsePage>
 </template>
 

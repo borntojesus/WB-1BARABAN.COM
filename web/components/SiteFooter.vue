@@ -34,6 +34,7 @@ const year = new Date().getFullYear()
           <NuxtLink to="/about" class="footer-link">About</NuxtLink>
           <NuxtLink to="/affiliate-disclosure" class="footer-link">Affiliate disclosure</NuxtLink>
           <NuxtLink to="/responsible-gambling" class="footer-link">Responsible gambling</NuxtLink>
+          <NuxtLink to="/contact" class="footer-link">Contact</NuxtLink>
           <NuxtLink to="/privacy" class="footer-link">Privacy</NuxtLink>
           <button type="button" class="footer-link footer-button" data-consent-open>Cookie settings</button>
         </div>
