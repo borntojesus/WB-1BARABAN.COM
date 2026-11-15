@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { mockOperators, type Operator } from '~/data/operators'
+import { Check, X, Gift, Landmark, BadgeCheck, ClipboardCheck, Layers, ThumbsUp, ThumbsDown, ExternalLink, Scale } from 'lucide-vue-next'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug))
@@ -163,21 +164,21 @@ useSchemaOrg([
 
       <div class="rev-proscons" id="proscons">
         <div class="rev-pros">
-          <h2 class="rev-h2">What works</h2>
+          <h2 class="rev-h2"><ThumbsUp :size="22" aria-hidden="true" />What works</h2>
           <ul>
-            <li v-for="p in op.pros" :key="p"><span class="rev-tick" aria-hidden="true">+</span>{{ p }}</li>
+            <li v-for="p in op.pros" :key="p"><Check class="rev-tick" :size="16" aria-hidden="true" />{{ p }}</li>
           </ul>
         </div>
         <div class="rev-cons">
-          <h2 class="rev-h2">What doesn't</h2>
+          <h2 class="rev-h2"><ThumbsDown :size="22" aria-hidden="true" />What doesn't</h2>
           <ul>
-            <li v-for="c in op.cons" :key="c"><span class="rev-cross" aria-hidden="true">−</span>{{ c }}</li>
+            <li v-for="c in op.cons" :key="c"><X class="rev-cross" :size="16" aria-hidden="true" />{{ c }}</li>
           </ul>
         </div>
       </div>
 
       <section class="rev-section" id="bonus" v-if="primaryBonus">
-        <h2 class="rev-h2">Bonus, decoded</h2>
+        <h2 class="rev-h2"><Gift :size="22" aria-hidden="true" />Bonus, decoded</h2>
         <div class="rev-bonus-card">
           <p class="rev-bonus-headline">{{ primaryBonus.headline }}</p>
           <dl class="rev-bonus-grid">
@@ -210,7 +211,7 @@ useSchemaOrg([
       </section>
 
       <section class="rev-section" id="banking">
-        <h2 class="rev-h2">Banking & payouts</h2>
+        <h2 class="rev-h2"><Landmark :size="22" aria-hidden="true" />Banking & payouts</h2>
         <table class="rev-table">
           <tbody>
             <tr>
@@ -242,7 +243,7 @@ useSchemaOrg([
       </section>
 
       <section class="rev-section" id="licensing">
-        <h2 class="rev-h2">Licensing & corporate</h2>
+        <h2 class="rev-h2"><BadgeCheck :size="22" aria-hidden="true" />Licensing & corporate</h2>
         <ul class="rev-license-list">
           <li v-for="lic in op.licenses" :key="lic.authority">
             <p class="rev-license-auth">{{ lic.authority }}</p>
@@ -253,7 +254,7 @@ useSchemaOrg([
                 <span>#{{ lic.number }}</span>
               </template>
               <span aria-hidden="true"> · </span>
-              <a :href="lic.registerUrl" rel="nofollow noopener" target="_blank">verify on register ↗</a>
+              <a :href="lic.registerUrl" rel="nofollow noopener" target="_blank">verify on register<ExternalLink :size="12" aria-hidden="true" /></a>
             </p>
           </li>
         </ul>
@@ -266,12 +267,12 @@ useSchemaOrg([
       </section>
 
       <section class="rev-section" id="methodology">
-        <h2 class="rev-h2">How we scored {{ op.name }}</h2>
+        <h2 class="rev-h2"><ClipboardCheck :size="22" aria-hidden="true" />How we scored {{ op.name }}</h2>
         <p class="rev-methodology-intro">
           We score every operator against six pillars on the same 10-point scale,
           weighted by what materially affects player outcomes. The same 6-pillar
           framework runs across every vertical — vertical-specific weights live
-          in our <NuxtLink to="/methodology">public methodology</NuxtLink>.
+          in our <NuxtLink to="/methodology" class="rev-inline-link"><Scale :size="14" aria-hidden="true" />public methodology</NuxtLink>.
         </p>
         <table class="rev-table">
           <thead>
@@ -297,7 +298,7 @@ useSchemaOrg([
 
     <section v-if="related.length" class="rev-related">
       <div class="container-page">
-        <h2 class="rev-h2">Other operators in this vertical</h2>
+        <h2 class="rev-h2"><Layers :size="22" aria-hidden="true" />Other operators in this vertical</h2>
         <div class="rev-related-grid">
           <OperatorCard v-for="r in related" :key="r.slug" :operator="r" variant="compact" />
         </div>
@@ -438,6 +439,7 @@ useSchemaOrg([
   color: var(--text-secondary);
 }
 .rev-tick {
+  margin-top: 2px;
   color: var(--accent-success);
   font-family: var(--font-mono);
   font-weight: 600;
@@ -446,6 +448,7 @@ useSchemaOrg([
   line-height: 1.4;
 }
 .rev-cross {
+  margin-top: 2px;
   color: var(--accent-danger);
   font-family: var(--font-mono);
   font-weight: 600;
@@ -458,7 +461,12 @@ useSchemaOrg([
   margin-bottom: var(--space-12);
   scroll-margin-top: calc(var(--header-height) + var(--space-4));
 }
+.rev-inline-link, .rev-license-meta a { display: inline-flex; align-items: center; gap: 4px; }
+.rev-h2 > svg { color: var(--accent-primary); flex-shrink: 0; }
 .rev-h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   letter-spacing: -0.025em;
   margin-bottom: var(--space-5);

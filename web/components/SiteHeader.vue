@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Dices, Trophy, Spade, Sparkles } from 'lucide-vue-next'
 const route = useRoute()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -15,10 +16,10 @@ if (import.meta.client) {
 }
 
 const verticals = [
-  { name: 'Casino', href: '/online-casinos' },
-  { name: 'Sports', href: '/sports-betting' },
-  { name: 'Poker', href: '/poker' },
-  { name: 'Slots', href: '/slots' },
+  { name: 'Casino', href: '/online-casinos', icon: Dices },
+  { name: 'Sports', href: '/sports-betting', icon: Trophy },
+  { name: 'Poker', href: '/poker', icon: Spade },
+  { name: 'Slots', href: '/slots', icon: Sparkles },
 ]
 
 watch(() => route.path, () => {
@@ -39,6 +40,7 @@ watch(() => route.path, () => {
           class="nav-link"
           active-class="nav-link-active"
         >
+          <component :is="v.icon" :size="16" aria-hidden="true" />
           {{ v.name }}
         </NuxtLink>
       </nav>
@@ -113,6 +115,7 @@ watch(() => route.path, () => {
 .nav-link {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 8px 12px;
   border-radius: var(--radius-md);
   color: var(--text-secondary);

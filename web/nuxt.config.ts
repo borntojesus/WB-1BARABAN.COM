@@ -90,6 +90,8 @@ export default defineNuxtConfig({
     preset: "netlify_static",
     prerender: {
       failOnError: false,
+      crawlLinks: true,
+      routes: ["/compare", "/authors/anna-k", "/authors/marek-s"],
     },
   },
 
@@ -99,6 +101,8 @@ export default defineNuxtConfig({
     "/methodology": { prerender: true },
     "/affiliate-disclosure": { prerender: true },
     "/responsible-gambling": { prerender: true },
+    "/compare": { prerender: true },
+    "/authors/**": { prerender: true },
     "/online-casinos/**": { isr: 600 },
     "/sports-betting/**": { isr: 600 },
     "/poker/**": { isr: 600 },

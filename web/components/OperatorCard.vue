@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Operator } from '~/data/operators'
+import { Gift, ArrowRight, Coins, UserCheck } from 'lucide-vue-next'
 
 type Props = {
   operator: Operator
@@ -52,11 +53,12 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
           :tier="primaryLicense.tier"
         />
         <TrustPayoutSpeedBadge :hours="operator.payoutSpeedHours" />
-        <span v-if="operator.cryptoSupported" class="meta-chip mono">crypto</span>
-        <span v-if="operator.kycLevel === 'soft'" class="meta-chip mono">soft KYC</span>
+        <span v-if="operator.cryptoSupported" class="meta-chip mono"><Coins :size="14" aria-hidden="true" />crypto</span>
+        <span v-if="operator.kycLevel === 'soft'" class="meta-chip mono"><UserCheck :size="14" aria-hidden="true" />soft KYC</span>
       </div>
 
       <div v-if="primaryBonus && variant !== 'compact'" class="op-bonus">
+        <Gift class="bonus-icon" :size="20" aria-hidden="true" />
         <span class="bonus-label mono">welcome bonus</span>
         <span class="bonus-headline">{{ primaryBonus.headline }}</span>
       </div>
@@ -65,6 +67,7 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
     <div class="op-actions">
       <NuxtLink :to="`/reviews/${operator.slug}`" class="op-secondary">
         Read review
+        <ArrowRight :size="14" aria-hidden="true" />
       </NuxtLink>
       <AffiliateAffiliateCTA
         :operator-name="operator.name"
@@ -161,6 +164,7 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
 .meta-chip {
   display: inline-flex;
   align-items: center;
+  gap: 4px;
   padding: 4px 10px;
   font-size: 11px;
   border-radius: var(--radius-sm);
@@ -176,6 +180,7 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
   border-radius: var(--radius-md);
   border: 1px dashed var(--border);
 }
+.bonus-icon { color: var(--accent-primary); flex-shrink: 0; }
 .bonus-label {
   font-size: 10px;
   color: var(--text-tertiary);
@@ -195,6 +200,9 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
   justify-content: space-between;
 }
 .op-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13px;
   color: var(--text-secondary);
   font-weight: 500;

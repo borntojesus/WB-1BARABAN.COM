@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import { mockOperators } from '~/data/operators'
+import {
+  Dices, Trophy, Spade, Sparkles, ArrowRight, ListChecks, Gauge, FileText, CalendarCheck,
+  Ban, Eye, BadgeCheck, Handshake, Layers, Crown, ShieldCheck, Users,
+} from 'lucide-vue-next'
+
+const verticalIcons: Record<string, any> = {
+  'online-casinos': Dices,
+  'sports-betting': Trophy,
+  poker: Spade,
+  slots: Sparkles,
+}
 
 const verticals = [
   {
@@ -87,18 +98,22 @@ useSchemaOrg([
 
         <div class="home-stats">
           <div class="home-stat">
+            <component :is="Users" class="home-stat-icon" :size="20" aria-hidden="true" />
             <p class="home-stat-value mono">{{ stats.operators }}</p>
             <p class="home-stat-label mono">operators reviewed</p>
           </div>
           <div class="home-stat">
+            <component :is="Gauge" class="home-stat-icon" :size="20" aria-hidden="true" />
             <p class="home-stat-value mono">{{ stats.avgScore }}</p>
             <p class="home-stat-label mono">average Trust Index</p>
           </div>
           <div class="home-stat">
+            <component :is="FileText" class="home-stat-icon" :size="20" aria-hidden="true" />
             <p class="home-stat-value mono">{{ stats.methodology }}</p>
             <p class="home-stat-label mono">methodology version</p>
           </div>
           <div class="home-stat">
+            <component :is="CalendarCheck" class="home-stat-icon" :size="20" aria-hidden="true" />
             <p class="home-stat-value mono">{{ stats.lastUpdated }}</p>
             <p class="home-stat-label mono">last verified</p>
           </div>
@@ -109,7 +124,7 @@ useSchemaOrg([
     <section class="home-verticals">
       <div class="container-page">
         <header class="home-section-head">
-          <h2 class="home-section-title">Pick a vertical</h2>
+          <h2 class="home-section-title"><Layers :size="24" aria-hidden="true" />Pick a vertical</h2>
           <p class="home-section-sub">Each hub ranks operators by Trust Index — same methodology, vertical-specific weighting.</p>
         </header>
         <div class="home-vert-grid">
@@ -119,12 +134,15 @@ useSchemaOrg([
             :to="`/${v.slug}`"
             class="home-vert-card"
           >
-            <p class="home-vert-eyebrow mono">{{ v.eyebrow }}</p>
+            <p class="home-vert-eyebrow mono">
+              <component :is="verticalIcons[v.slug]" :size="22" aria-hidden="true" />
+              {{ v.eyebrow }}
+            </p>
             <h3 class="home-vert-name">{{ v.name }}</h3>
             <p class="home-vert-blurb">{{ v.blurb }}</p>
             <div class="home-vert-foot">
               <span class="mono home-vert-count">{{ v.count }} reviewed</span>
-              <span class="home-vert-arrow" aria-hidden="true">→</span>
+              <ArrowRight class="home-vert-arrow" :size="18" aria-hidden="true" />
             </div>
           </NuxtLink>
         </div>
@@ -134,7 +152,7 @@ useSchemaOrg([
     <section class="home-top">
       <div class="container-page">
         <header class="home-section-head">
-          <h2 class="home-section-title">Top operators across all verticals</h2>
+          <h2 class="home-section-title"><Crown :size="24" aria-hidden="true" />Top operators across all verticals</h2>
           <p class="home-section-sub">
             <span class="mono">methodology v2.4</span> · sorted by editorial Trust Index
           </p>
@@ -147,25 +165,25 @@ useSchemaOrg([
 
     <section class="home-promise">
       <div class="container-page home-promise-inner">
-        <h2 class="home-promise-title">What we promise</h2>
+        <h2 class="home-promise-title"><ShieldCheck :size="24" aria-hidden="true" />What we promise</h2>
         <div class="home-promise-grid">
           <div class="home-promise-item">
-            <p class="home-promise-eyebrow mono">no pay-to-rank</p>
+            <p class="home-promise-eyebrow mono"><Ban :size="18" aria-hidden="true" />no pay-to-rank</p>
             <p class="home-promise-text">Editorial scores are not for sale. Operators can't pay to move up.</p>
           </div>
           <div class="home-promise-item">
-            <p class="home-promise-eyebrow mono">public methodology</p>
+            <p class="home-promise-eyebrow mono"><Eye :size="18" aria-hidden="true" />public methodology</p>
             <p class="home-promise-text">
               Every weight is public. Every change is logged.
               <NuxtLink to="/methodology">Read it</NuxtLink>.
             </p>
           </div>
           <div class="home-promise-item">
-            <p class="home-promise-eyebrow mono">verified licenses</p>
+            <p class="home-promise-eyebrow mono"><BadgeCheck :size="18" aria-hidden="true" />verified licenses</p>
             <p class="home-promise-text">License numbers link directly to the regulator's public register. Click and check.</p>
           </div>
           <div class="home-promise-item">
-            <p class="home-promise-eyebrow mono">honest affiliate</p>
+            <p class="home-promise-eyebrow mono"><Handshake :size="18" aria-hidden="true" />honest affiliate</p>
             <p class="home-promise-text">
               We earn from affiliate links — never from positive coverage.
               <NuxtLink to="/affiliate-disclosure">How it works</NuxtLink>.
@@ -229,6 +247,16 @@ useSchemaOrg([
   .home-stats { grid-template-columns: repeat(4, 1fr); }
 }
 .home-stat { padding: var(--space-3); text-align: center; }
+.home-stat-icon { color: var(--accent-primary); margin: 0 auto var(--space-2); display: block; }
+.home-section-title,
+.home-promise-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.home-promise-title { justify-content: center; }
+.home-section-title > svg,
+.home-promise-title > svg { color: var(--accent-primary); flex-shrink: 0; }
 .home-stat-value {
   font-size: var(--text-2xl);
   font-weight: 600;
@@ -286,6 +314,9 @@ useSchemaOrg([
   transform: translateY(-3px);
 }
 .home-vert-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -349,6 +380,9 @@ useSchemaOrg([
   border-left: 2px solid var(--accent-primary);
 }
 .home-promise-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;

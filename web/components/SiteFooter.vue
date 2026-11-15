@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Layers, ShieldCheck, BookOpen, ExternalLink, ShieldAlert } from 'lucide-vue-next'
 const year = new Date().getFullYear()
 </script>
 
@@ -9,11 +10,11 @@ const year = new Date().getFullYear()
         <div class="footer-brand">
           <BrandMark size="md" />
           <p class="footer-tagline">Independent iGaming reviews. Public methodology. AI concierge.</p>
-          <p class="footer-rg-tagline mono">18+ · Gamble responsibly · BeGambleAware.org</p>
+          <p class="footer-rg-tagline mono"><ShieldAlert :size="16" aria-hidden="true" />18+ · Gamble responsibly · BeGambleAware.org</p>
         </div>
 
         <div class="footer-col">
-          <h3 class="col-title">Verticals</h3>
+          <h3 class="col-title"><Layers :size="14" aria-hidden="true" />Verticals</h3>
           <NuxtLink to="/online-casinos" class="footer-link">Online casinos</NuxtLink>
           <NuxtLink to="/sports-betting" class="footer-link">Sports betting</NuxtLink>
           <NuxtLink to="/poker" class="footer-link">Poker</NuxtLink>
@@ -21,7 +22,7 @@ const year = new Date().getFullYear()
         </div>
 
         <div class="footer-col">
-          <h3 class="col-title">Trust</h3>
+          <h3 class="col-title"><ShieldCheck :size="14" aria-hidden="true" />Trust</h3>
           <NuxtLink to="/methodology" class="footer-link">Methodology</NuxtLink>
           <NuxtLink to="/about" class="footer-link">About 1baraban</NuxtLink>
           <NuxtLink to="/affiliate-disclosure" class="footer-link">Affiliate disclosure</NuxtLink>
@@ -31,11 +32,11 @@ const year = new Date().getFullYear()
         </div>
 
         <div class="footer-col">
-          <h3 class="col-title">Resources</h3>
-          <a href="https://www.begambleaware.org/" rel="noopener" target="_blank" class="footer-link">BeGambleAware</a>
-          <a href="https://www.gamcare.org.uk/" rel="noopener" target="_blank" class="footer-link">GamCare</a>
-          <a href="https://www.gamblingcommission.gov.uk/" rel="noopener" target="_blank" class="footer-link">UKGC</a>
-          <a href="https://www.mga.org.mt/" rel="noopener" target="_blank" class="footer-link">MGA</a>
+          <h3 class="col-title"><BookOpen :size="14" aria-hidden="true" />Resources</h3>
+          <a href="https://www.begambleaware.org/" rel="noopener" target="_blank" class="footer-link">BeGambleAware<ExternalLink :size="12" aria-hidden="true" /></a>
+          <a href="https://www.gamcare.org.uk/" rel="noopener" target="_blank" class="footer-link">GamCare<ExternalLink :size="12" aria-hidden="true" /></a>
+          <a href="https://www.gamblingcommission.gov.uk/" rel="noopener" target="_blank" class="footer-link">UKGC<ExternalLink :size="12" aria-hidden="true" /></a>
+          <a href="https://www.mga.org.mt/" rel="noopener" target="_blank" class="footer-link">MGA<ExternalLink :size="12" aria-hidden="true" /></a>
         </div>
       </div>
 
@@ -77,6 +78,9 @@ const year = new Date().getFullYear()
   font-size: var(--text-sm);
 }
 .footer-rg-tagline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   margin-top: var(--space-3);
   color: var(--text-tertiary);
   font-size: 12px;
@@ -88,6 +92,9 @@ const year = new Date().getFullYear()
   gap: var(--space-2);
 }
 .col-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -96,6 +103,9 @@ const year = new Date().getFullYear()
   margin-bottom: var(--space-2);
 }
 .footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: var(--text-sm);
   color: var(--text-secondary);
   padding: 4px 0;
