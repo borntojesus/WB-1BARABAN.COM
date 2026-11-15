@@ -16,11 +16,12 @@ withDefaults(defineProps<Props>(), { variant: 'compact' })
     <div class="rg-body">
       <p v-if="variant === 'full'" class="rg-title">Gamble responsibly</p>
       <p class="rg-text">
-        18+ only. Gambling can be addictive, please play responsibly.
-        Free, confidential help:
-        <a href="https://www.begambleaware.org/" rel="noopener" target="_blank">BeGambleAware.org</a>,
-        <a href="https://www.gamstop.co.uk/" rel="noopener" target="_blank">GAMSTOP</a>,
-        <NuxtLink to="/responsible-gambling">more help</NuxtLink>.
+        Gambling can be addictive. <strong>Play responsibly.</strong>
+        Help is free and confidential —
+        <a href="https://www.begambleaware.org/" rel="noopener" target="_blank">BeGambleAware</a>,
+        <a href="https://www.gamcare.org.uk/" rel="noopener" target="_blank">GamCare</a>,
+        <a href="https://www.gamblingtherapy.org/" rel="noopener" target="_blank">Gambling Therapy</a>.
+        18+ (21+ in some jurisdictions).
       </p>
     </div>
   </aside>

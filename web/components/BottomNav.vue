@@ -3,7 +3,8 @@ const route = useRoute()
 
 const items = [
   { label: 'Home', href: '/', icon: 'home' },
-  { label: 'Reviews', href: '/reviews', icon: 'casino' },
+  { label: 'Casino', href: '/online-casinos', icon: 'casino' },
+  { label: 'Slots', href: '/slots', icon: 'slots' },
   { label: 'Compare', href: '/compare', icon: 'compare' },
   { label: 'Ask', href: '/ask', icon: 'ai' },
 ]

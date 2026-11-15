@@ -1,38 +1,40 @@
 <script setup lang="ts">
-import { operators as all, CHECKED } from '~/data/operators'
+import { operatorsByVertical } from '~/data/operators'
 
-const operators = all.filter(o => o.verticals.value?.includes('poker'))
-  .sort((a, b) => Number(b.gbStatus === 'licensed') - Number(a.gbStatus === 'licensed'))
+const operators = operatorsByVertical('poker')
 
 useSeoMeta({
-  title: 'Poker operator profiles: none published yet',
-  description: `We have no poker operator profiles yet. See all gambling operator fact profiles with UK licence status and sources, last checked ${CHECKED}.`,
-  ogTitle: 'Poker operator profiles: none published yet',
-  ogDescription: `We have no poker operator profiles yet. See all gambling operator fact profiles with UK licence status and sources, last checked ${CHECKED}.`,
+  title: 'Best poker rooms · independent reviews',
+  description: 'Top poker rooms ranked by Trust Index. Cash-game traffic, rake structure, rakeback economics — analysed for grinder EV, not just sign-up bonuses.',
+  ogTitle: 'Best poker rooms — 1baraban Trust Index',
+  ogDescription: 'Rake-structure-aware reviews of major poker rooms. EV-first scoring methodology.',
 })
-useHead({ link: [{ rel: 'canonical', href: 'https://1baraban.com/poker' }] })
+
 useSchemaOrg([
-  defineWebPage({ name: 'Poker operator profiles: none published yet' }),
-  {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://1baraban.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Poker', item: 'https://1baraban.com/poker' },
-    ],
-  },
-  {
-    '@type': 'ItemList',
-    itemListElement: operators.map((o, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://1baraban.com/reviews/${o.slug}`, name: o.name })),
-  },
+  defineWebPage({ name: 'Best poker rooms' }),
+  defineItemList({
+    itemListElement: operators.map((op, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://1baraban.com/reviews/${op.slug}`,
+      name: op.name,
+    })),
+  }),
 ])
 </script>
 
 <template>
   <VerticalHub
-    eyebrow="Poker"
-    title="Poker profiles"
-    intro="We have not published a poker operator profile yet. We add a vertical only when an operator in it has been checked against the regulator register."
+    vertical="poker"
+    title="Poker rooms, judged by EV."
+    tagline="Cash-game traffic, rake structure, rakeback math, MTT field strength — the metrics that move long-run win-rate, not just deposit bonuses."
+    intro="Poker is unforgiving, and the wrong room can cost a winning player money even when they're playing well. We score rooms on cash-game traffic at typical hours, rake cap structure, rakeback or loyalty programme value, MTT field strength, and bot/RTA enforcement. Bonuses are weighted lower here than in casino reviews — the rake structure dwarfs any welcome offer over a meaningful sample size."
     :operators="operators"
-    empty-text="No operator in our data offers poker, so there is nothing to list. We would rather show an empty page than a made-up list."
+    :facts="[
+      { label: 'rooms reviewed', value: String(operators.length) || '—' },
+      { label: 'methodology', value: 'v2.4' },
+      { label: 'next review wave', value: 'Q3 2026' },
+      { label: 'editorial focus', value: 'EV-first' },
+    ]"
   />
 </template>

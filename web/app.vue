@@ -1,23 +1,23 @@
 <script setup lang="ts">
 useSeoMeta({
   titleTemplate: '%s · 1baraban',
-  title: 'Independent gambling operator facts',
-  description: 'Sourced and dated facts about online gambling operators, from regulators\' public registers and operators\' own pages. No ads, no scores, 18+ only.',
+  title: 'Independent iGaming Reviews',
+  description: 'Find a gambling site you can actually trust. Independent reviews, public methodology, AI concierge. EU + global.',
   ogType: 'website',
   ogSiteName: '1baraban',
-  twitterCard: 'summary',
+  twitterCard: 'summary_large_image',
 })
 
 useSchemaOrg([
   defineOrganization({
     name: '1baraban',
     url: 'https://1baraban.com',
-    email: 'editorial@1baraban.com',
-    description: 'Independent reference for online gambling operators, built on sourced and dated facts.',
+    logo: 'https://1baraban.com/logo.svg',
+    description: 'Independent iGaming review platform — casinos, sportsbooks, poker, slots.',
   }),
   defineWebSite({
     name: '1baraban',
-    description: 'Sourced and dated facts about online gambling operators.',
+    description: 'Independent iGaming reviews with public methodology and AI concierge.',
   }),
 ])
 
@@ -34,6 +34,7 @@ onMounted(() => {
     <NuxtPage />
   </NuxtLayout>
   <ClientOnly>
-    <ComplianceAgeGateModal />
+    <AgeGateModal />
+    <AIConciergeLauncher />
   </ClientOnly>
 </template>

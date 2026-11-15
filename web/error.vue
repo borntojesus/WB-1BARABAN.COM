@@ -18,10 +18,10 @@ const message = computed(() => {
     <div class="container-narrow error-inner">
       <p class="error-code mono">{{ code }}</p>
       <h1 class="error-title">{{ message }}</h1>
-      <p class="error-sub">The signal got lost somewhere. Try the homepage or browse the reviews.</p>
+      <p class="error-sub">The signal got lost somewhere. Try the homepage, or ask the concierge what you were looking for.</p>
       <div class="error-actions">
         <button @click="handleError" class="btn-primary">Back to home</button>
-        <NuxtLink to="/reviews" class="btn-secondary">Browse reviews</NuxtLink>
+        <NuxtLink to="/ask" class="btn-secondary">Ask the concierge →</NuxtLink>
       </div>
     </div>
   </div>

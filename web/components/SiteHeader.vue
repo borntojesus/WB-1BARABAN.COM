@@ -15,11 +15,10 @@ if (import.meta.client) {
 }
 
 const verticals = [
-  { name: 'Reviews', href: '/reviews' },
-  { name: 'Compare', href: '/compare' },
-  { name: 'Casinos', href: '/online-casinos' },
-  { name: 'Sports betting', href: '/sports-betting' },
-  { name: 'Methodology', href: '/methodology' },
+  { name: 'Casino', href: '/online-casinos' },
+  { name: 'Sports', href: '/sports-betting' },
+  { name: 'Poker', href: '/poker' },
+  { name: 'Slots', href: '/slots' },
 ]
 
 watch(() => route.path, () => {
@@ -45,7 +44,7 @@ watch(() => route.path, () => {
       </nav>
 
       <div class="header-actions">
-        <span class="header-link mono">18+</span>
+        <NuxtLink to="/methodology" class="header-link mono">methodology</NuxtLink>
         <ThemeToggle />
         <button
           class="mobile-menu-btn"
@@ -71,7 +70,7 @@ watch(() => route.path, () => {
             {{ v.name }}
           </NuxtLink>
           <hr class="mobile-divider" />
-          <NuxtLink to="/authors/editorial-team" class="mobile-link mono">Editorial team</NuxtLink>
+          <NuxtLink to="/methodology" class="mobile-link mono">Methodology</NuxtLink>
           <NuxtLink to="/about" class="mobile-link mono">About</NuxtLink>
           <NuxtLink to="/responsible-gambling" class="mobile-link mono">Responsible gambling</NuxtLink>
         </div>
