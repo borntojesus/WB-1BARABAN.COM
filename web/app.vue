@@ -12,7 +12,7 @@ useSchemaOrg([
   defineOrganization({
     name: '1baraban',
     url: 'https://1baraban.com',
-    logo: 'https://1baraban.com/logo.svg',
+    logo: 'https://1baraban.com/brand/logo-on-light.png',
     description: 'Independent iGaming review platform — casinos, sportsbooks, poker, slots.',
   }),
   defineWebSite({

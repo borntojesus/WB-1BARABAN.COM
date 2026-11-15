@@ -106,7 +106,7 @@ useSchemaOrg([
 
         <div class="rev-hero-grid">
           <div class="rev-hero-left">
-            <div class="rev-logo" aria-hidden="true"><span>{{ initials }}</span></div>
+            <div class="rev-logo" :class="{ 'has-img': op.logo }" aria-hidden="true"><img v-if="op.logo" :src="op.logo" alt="" /><span v-else>{{ initials }}</span></div>
             <h1 class="rev-title">
               {{ op.name }} <span class="rev-title-sub">review</span>
             </h1>
@@ -148,6 +148,10 @@ useSchemaOrg([
             />
           </div>
         </div>
+        <figure v-if="op.screenshot" class="rev-shot">
+          <img :src="op.screenshot" :alt="`${op.name} homepage, captured ${op.lastVerified}`" width="1440" height="900" loading="lazy" decoding="async" />
+          <figcaption class="mono">{{ op.name }} homepage · captured {{ op.lastVerified }}</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -320,6 +324,11 @@ useSchemaOrg([
 @media (min-width: 1024px) {
   .rev-hero-grid { grid-template-columns: 1fr 1fr; gap: var(--space-12); }
 }
+.rev-logo.has-img { background: var(--bg-tertiary); border: 1px solid var(--border); padding: 8px; }
+.rev-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.rev-shot { margin: var(--space-10) 0 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-secondary); box-shadow: var(--shadow-lg); }
+.rev-shot img { width: 100%; height: auto; display: block; }
+.rev-shot figcaption { padding: var(--space-3) var(--space-4); font-size: 12px; color: var(--text-tertiary); border-top: 1px solid var(--border); }
 .rev-logo {
   width: 64px;
   height: 64px;

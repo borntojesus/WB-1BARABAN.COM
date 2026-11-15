@@ -30,6 +30,7 @@ export type Operator = {
   websiteUrl: string;
   affiliateUrl: string;
   logo?: string;
+  screenshot?: string;
   tagline: string;
   tldr: string;
   score: number;
@@ -71,6 +72,7 @@ export const mockOperators: Operator[] = [
     founded: 2017,
     parent: "Easygo Entertainment",
     websiteUrl: "https://stake.com",
+    logo: "/operators/stake/logo.png",
     affiliateUrl: "https://stake.com/?c=1baraban",
     tagline: "The home of crypto-native gambling",
     tldr: "Stake is a Curaçao-licensed online casino and sportsbook founded in 2017, built around crypto-first banking with sub-1-hour withdrawals on most chains. It offers 5,000+ slots, 90+ live tables, an in-house sportsbook, and a strong original-games suite. Best suited to crypto-native players who value fast payouts and minimal KYC friction at moderate stakes.",
@@ -145,6 +147,8 @@ export const mockOperators: Operator[] = [
     legalName: "BlockDance B.V.",
     founded: 2017,
     websiteUrl: "https://bc.game",
+    logo: "/operators/bcgame/logo.png",
+    screenshot: "/operators/bcgame/screenshot.webp",
     affiliateUrl: "https://bc.game/i/1baraban",
     tagline: "The crypto casino with the deepest game library",
     tldr: 'BC.Game is a Curaçao-licensed crypto casino founded in 2017, supporting 150+ cryptocurrencies and offering 9,000+ games from 80+ providers. Notable for its in-house "BCD" rewards token, frequent 100k+ jackpots, and active community. Best suited to crypto enthusiasts and slot players who want maximum game variety with crypto-native banking.',
@@ -217,6 +221,8 @@ export const mockOperators: Operator[] = [
     legalName: "Direx N.V.",
     founded: 2014,
     websiteUrl: "https://bitstarz.com",
+    logo: "/operators/bitstarz/logo.svg",
+    screenshot: "/operators/bitstarz/screenshot.webp",
     affiliateUrl: "https://bitstarz.com/?af_id=1baraban",
     tagline: "The award-winning crypto casino with hybrid fiat support",
     tldr: 'BitStarz is a Curaçao-licensed casino founded in 2014, one of the longest-running hybrid crypto-fiat operators. It offers 4,000+ slots and live tables, both crypto and fiat banking with same-day withdrawals, and has won multiple "Casino of the Year" awards from industry press. Best suited to slot players who want crypto-fast withdrawals without abandoning fiat options.',
@@ -377,6 +383,8 @@ export const mockOperators: Operator[] = [
     founded: 2008,
     parent: "William Hill (888 Holdings)",
     websiteUrl: "https://mrgreen.com",
+    logo: "/operators/mr-green/logo.svg",
+    screenshot: "/operators/mr-green/screenshot.webp",
     affiliateUrl: "https://mrgreen.com/?af=1baraban",
     tagline: "The gentleman of online casinos",
     tldr: 'Mr Green is a UKGC- and MGA-licensed casino founded in 2008 and now owned by 888 Holdings. Distinctive for its "Green Gaming" responsible-gambling toolkit — predictive limits, reality checks, and self-assessment. Offers 1,500+ slots and live casino with fiat-first banking. Best suited to UK and EU players who value premium presentation and best-in-class responsible gambling tools.',

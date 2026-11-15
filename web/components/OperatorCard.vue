@@ -24,9 +24,13 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
 <template>
   <article class="op-card" :class="`variant-${variant}`">
     <NuxtLink :to="`/reviews/${operator.slug}`" class="op-link" :aria-label="`Read ${operator.name} review`">
+      <figure v-if="operator.screenshot && variant !== 'compact'" class="op-shot">
+        <img :src="operator.screenshot" :alt="`${operator.name} homepage`" width="1440" height="900" loading="lazy" decoding="async" />
+      </figure>
       <div class="op-head">
-        <div class="op-logo" aria-hidden="true">
-          <span>{{ initials }}</span>
+        <div class="op-logo" :class="{ 'has-img': operator.logo }" aria-hidden="true">
+          <img v-if="operator.logo" :src="operator.logo" alt="" loading="lazy" />
+          <span v-else>{{ initials }}</span>
         </div>
         <div class="op-name-block">
           <h3 class="op-name">{{ operator.name }}</h3>
@@ -116,6 +120,10 @@ const initials = computed(() => props.operator.name.slice(0, 2).toUpperCase())
   letter-spacing: -0.02em;
   flex-shrink: 0;
 }
+.op-logo.has-img { background: var(--bg-tertiary); border: 1px solid var(--border); padding: 6px; }
+.op-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.op-shot { margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-6)) var(--space-4); aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--bg-tertiary); }
+.op-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .op-name-block { min-width: 0; }
 .op-name {
   font-size: var(--text-lg);
