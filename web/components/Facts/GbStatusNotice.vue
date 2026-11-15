@@ -19,7 +19,7 @@ const surrenderLicence = computed(() => props.operator.licences.find(l => /surre
 </template>
 
 <style scoped>
-.gbn { border: 2px solid var(--accent-danger); background: var(--accent-danger-soft); border-radius: 4px; padding: 16px 20px; margin: 24px 0; }
+.gbn { border: 2px solid var(--accent-danger); background: var(--accent-danger-soft); border-radius: var(--radius-md); padding: 16px 20px; margin: 24px 0; }
 .gbn-title { margin: 0 0 6px; font-weight: 700; font-size: 17px; color: var(--accent-danger); }
 .gbn-body { margin: 0; font-size: 15px; color: var(--text-primary); line-height: 1.55; }
 </style>

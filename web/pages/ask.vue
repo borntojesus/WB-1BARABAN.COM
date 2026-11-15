@@ -226,7 +226,7 @@ useSeoMeta({
 .ask-thinking .dot {
   width: 6px;
   height: 6px;
-  border-radius: 4px;
+  border-radius: 999px;
   background: var(--text-tertiary);
   animation: dot-pulse 1.2s var(--ease-in-out) infinite;
 }

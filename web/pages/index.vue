@@ -69,11 +69,11 @@ h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.08; letter-spacing: -
 h2 { font-size: 24px; margin: 48px 0 12px; }
 .lead { font-size: 19px; line-height: 1.65; color: var(--text-secondary); }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 12px; }
-.btn { padding: 10px 18px; background: var(--text-primary); color: #fff; border-radius: 4px; font-weight: 600; text-decoration: none; }
+.btn { padding: 10px 18px; background: var(--accent-primary); color: #fff; border-radius: var(--radius-md); font-weight: 600; text-decoration: none; }
 .btn.ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--border-strong); }
 .meta { font-size: 14px; color: var(--text-tertiary); }
 .hubs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
-.hub { display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-secondary); text-decoration: none; color: inherit; }
+.hub { display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-secondary); text-decoration: none; color: inherit; }
 .hub span { font-size: 14px; color: var(--text-secondary); }
 .how { line-height: 1.7; padding-left: 20px; max-width: 760px; }
 .how a, .rg a { color: var(--accent-primary); text-decoration: underline; }

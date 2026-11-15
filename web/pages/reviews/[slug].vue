@@ -162,7 +162,7 @@ useSchemaOrg([
 h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 8px; letter-spacing: -0.02em; }
 h2 { font-size: 22px; margin: 32px 0 12px; }
 .domain { margin: 0 0 8px; color: var(--text-secondary); }
-.status { margin-left: 8px; font-size: 12px; font-weight: 600; padding: 2px 8px; border: 1px solid var(--border-strong); border-radius: 2px; }
+.status { margin-left: 8px; font-size: 12px; font-weight: 600; padding: 2px 8px; border: 1px solid var(--border-strong); border-radius: var(--radius-full); }
 .byline { font-size: 14px; color: var(--text-secondary); margin: 0; }
 .lead { font-size: 17px; line-height: 1.65; }
 p { line-height: 1.65; }
@@ -176,7 +176,7 @@ table { width: 100%; border-collapse: collapse; }
 .src a { text-decoration: underline; }
 .plain { list-style: none; padding: 0; margin: 0; }
 .plain li { padding: 10px 0; border-top: 1px solid var(--border); }
-.nv { border: 1px solid var(--border-strong); background: var(--bg-tertiary); border-radius: 4px; padding: 4px 20px 12px; margin-top: 32px; }
+.nv { border: 1px solid var(--border-strong); background: var(--bg-tertiary); border-radius: var(--radius-lg); padding: 4px 20px 12px; margin-top: 32px; }
 .foot { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
 .foot a { text-decoration: underline; }
 </style>

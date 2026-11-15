@@ -46,6 +46,7 @@ watch(() => route.path, () => {
 
       <div class="header-actions">
         <span class="header-link mono">18+</span>
+        <ThemeToggle />
         <button
           class="mobile-menu-btn"
           type="button"

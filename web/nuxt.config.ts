@@ -39,8 +39,17 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width, initial-scale=1, viewport-fit=cover",
         },
-        { name: "theme-color", content: "#FAFAF7" },
-        { name: "color-scheme", content: "light" },
+        {
+          name: "theme-color",
+          content: "#0A0A0B",
+          media: "(prefers-color-scheme: dark)",
+        },
+        {
+          name: "theme-color",
+          content: "#FAFAF7",
+          media: "(prefers-color-scheme: light)",
+        },
+        { name: "color-scheme", content: "dark light" },
       ],
       script: [
         {

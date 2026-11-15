@@ -106,7 +106,7 @@ h2 { font-size: 24px; margin: 40px 0 8px; }
 h3 { font-size: 17px; margin: 20px 0 4px; }
 .lead { font-size: 17px; line-height: 1.65; color: var(--text-secondary); max-width: 760px; }
 a { color: var(--accent-primary); text-decoration: underline; }
-.scroll { overflow-x: auto; max-width: 100%; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-secondary); margin-top: 24px; }
+.scroll { overflow-x: auto; max-width: 100%; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg-secondary); margin-top: 24px; }
 table { border-collapse: collapse; min-width: 980px; width: 100%; }
 th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-top: 1px solid var(--border); font-size: 14px; line-height: 1.5; min-width: 170px; }
 thead th { border-top: 0; background: var(--bg-tertiary); font-size: 15px; }

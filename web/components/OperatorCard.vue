@@ -28,10 +28,10 @@ const verticals = computed(() => (props.operator.verticals.value || []).map(v =>
 </template>
 
 <style scoped>
-.op-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.op-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
 .op-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
 .op-name { margin: 0; font-size: 20px; font-weight: 600; }
-.op-badge { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 2px; border: 1px solid var(--border-strong); white-space: nowrap; }
+.op-badge { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: var(--radius-full); border: 1px solid var(--border-strong); white-space: nowrap; }
 .b-licensed { color: var(--accent-success); border-color: var(--accent-success); }
 .b-surrendered, .b-not-licensed { color: var(--accent-danger); border-color: var(--accent-danger); background: var(--accent-danger-soft); }
 .op-domain { margin: 0; font-family: var(--font-mono); font-size: 13px; color: var(--text-tertiary); }

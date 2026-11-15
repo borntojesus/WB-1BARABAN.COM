@@ -15,9 +15,9 @@ defineProps<{ operatorName: string; slug: string; size?: 'sm' | 'md' }>()
 
 <style scoped>
 .cta { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
-.cta-btn { display: inline-block; padding: 10px 18px; background: var(--text-primary); color: #fff; border-radius: 4px; font-weight: 600; font-size: 15px; text-decoration: none; }
+.cta-btn { display: inline-block; padding: 10px 18px; background: var(--accent-primary); color: #fff; border-radius: var(--radius-md); font-weight: 600; font-size: 15px; text-decoration: none; }
 .cta-sm .cta-btn { padding: 8px 14px; font-size: 14px; }
-.cta-btn:hover { background: #27272a; }
+.cta-btn:hover { background: var(--accent-primary-hover); }
 .cta-label { margin: 0; font-size: 12px; line-height: 1.45; color: var(--text-secondary); max-width: 46ch; }
 .cta-label a { text-decoration: underline; color: inherit; }
 </style>
