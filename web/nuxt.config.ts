@@ -103,6 +103,10 @@ export default defineNuxtConfig({
   hooks: {
     // Write /go/<slug> -> affiliate URL redirects from data/operators.ts into
     // dist/_redirects, ahead of the preset's own rules (first match wins).
+    // Also keeps dist valid on both Netlify and Cloudflare Pages: Pages rejects the
+    // preset's `/* /404.html 404` rule (404.html at the root is served for misses
+    // automatically on both hosts), and the SEO module's `X-Robots-Tag: noindex` on
+    // /_nuxt is dropped (fleet rule: no noindex anywhere).
     "nitro:init"(nitro) {
       const body =
         mockOperators.map((o) => `/go/${o.slug}  ${o.affiliateUrl}  302`).join("\n") + "\n";
@@ -113,7 +117,29 @@ export default defineNuxtConfig({
         try {
           existing = readFileSync(`${out}/_redirects`, "utf8");
         } catch {}
+        existing = existing
+          .split("\n")
+          .filter((l) => !/^\/\*\s+\/404\.html\s+404\s*$/.test(l.trim()))
+          .join("\n");
         writeFileSync(`${out}/_redirects`, body + existing);
+        try {
+          const h = readFileSync(`${out}/_headers`, "utf8")
+            .split("\n")
+            .filter((l) => !/^\s*x-robots-tag\s*:/i.test(l))
+            .join("\n")
+            .replace(/^\/_nuxt\n(?=\/)/m, "");
+          writeFileSync(`${out}/_headers`, h);
+        } catch {}
+        // Error pages: the HTTP status alone says 404, no noindex meta (fleet rule).
+        for (const f of ["404.html", "200.html"]) {
+          try {
+            const t = readFileSync(`${out}/${f}`, "utf8");
+            writeFileSync(
+              `${out}/${f}`,
+              t.replace(/<meta name="robots" content="noindex, nofollow"\s*\/?>/g, ""),
+            );
+          } catch {}
+        }
       });
     },
   },
