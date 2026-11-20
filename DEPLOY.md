@@ -55,3 +55,23 @@ howard/stella (Netlify records). The previous zone's NS (monroe/jay, pointing at
 Vercel) were cached by some resolvers with a 48h TTL, so a few ISPs may still
 show the old Vercel 404 until about 2026-11-08 21:00 UTC. Check with
 `curl --resolve 1baraban.com:443:75.2.60.5 https://1baraban.com/`.
+
+## Staging
+
+Homelab staging since 2026-11-20: check every fix here before production.
+
+| What | Where |
+| --- | --- |
+| URL | https://1baraban-staging.antonyuk.org |
+| Command | `deploy/staging.sh` (production build of the current HEAD, refuses uncommitted tracked changes) |
+| Auth | basic auth, user `staging`, gateway secret `staging-basic-auth` (MCP `mail` `secret_get`; 1Password vault gmail-gateway) |
+| Backend | Caddy CT 213, block `http://1baraban-staging.antonyuk.org` in `/etc/caddy/Caddyfile`, webroot `/var/www/1baraban-staging` |
+| Public path | tunnel `homelab-antonyuk` rule to `http://192.168.31.213:80`, proxied CNAME `1baraban-staging` in zone antonyuk.org |
+| Redirects | `deploy/netlify-to-caddy.mjs` converts the build's Netlify rules into `/etc/caddy/staging/1baraban.caddy`; Caddy restarts only when that file changed (validated first, old file restored on failure) |
+
+No noindex anywhere: basic auth keeps crawlers out (401), and the HTML is the production build. `/__staging.json` shows the published commit. The Caddy block adds `try_files {path} {path}/index.html {path}.html` so slash-less URLs serve without a redirect, like Netlify with pretty URLs off. Check the affiliate links with `curl -su staging:<password> -o /dev/null -w '%{http_code} %{redirect_url}' https://1baraban-staging.antonyuk.org/go/stake` (302).
+
+```bash
+deploy/staging.sh
+curl -su "staging:<password>" https://1baraban-staging.antonyuk.org/__staging.json
+```
