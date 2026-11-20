@@ -41,3 +41,7 @@ ct "if cmp -s $SNIP $SNIP.new; then rm $SNIP.new; echo redirects unchanged; else
 sleep 2
 code=$(curl -s -o /dev/null -w '%{http_code}' "https://uat-$SLUG.antonyuk.org/__uat.json")
 echo "published $sha to https://uat-$SLUG.antonyuk.org (/__uat.json: $code, expected 200 over VPN)"
+
+# Post-deploy SEO check (KT-SEO-SVC). A failed check fails this command; the deploy stays.
+export SEO_CHECK_SOURCE=publish.sh SEO_CHECK_REF="$(git rev-parse HEAD)"
+deploy/post-deploy-check.sh 1baraban.com uat "https://uat-$SLUG.antonyuk.org" || { echo "post-deploy check FAILED (deploy kept)"; exit 1; }

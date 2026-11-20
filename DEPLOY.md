@@ -24,6 +24,7 @@ and the link checker.
 NETLIFY_AUTH_TOKEN=<token> netlify deploy --no-build --dir "$PWD/web/dist" --site <site-id>
 # then prod
 netlify deploy --prod --no-build --dir "$PWD/web/dist" --site <site-id>
+deploy/post-deploy-check.sh 1baraban.com prod
 ```
 
 ## DNS (Cloudflare zone, not in our accounts, owner sets it)
