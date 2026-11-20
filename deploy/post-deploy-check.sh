@@ -1,5 +1,5 @@
 #!/bin/sh
-# Vendored copy of KT-KIT/KT-SEO-SVC watcher/bin/kt-seo-check.sh @ 63176c08 (github.com/borntojesus/KT-SEO-SVC); re-copy, do not edit.
+# Vendored copy of KT-KIT/KT-SEO-SVC watcher/bin/kt-seo-check.sh @ ba6eedfa (github.com/borntojesus/KT-SEO-SVC); re-copy, do not edit.
 # KT-SEO-SVC post-deploy check client (docs/WATCHER.md "On-demand check").
 # Usage: kt-seo-check.sh <site> <env> [baseUrl]
 #   env: prod | uat (staging = uat). baseUrl overrides the checked URL (deploy previews, uat hosts).
@@ -36,7 +36,7 @@ body="{\"site\":\"$(esc "$site")\",\"env\":\"$(esc "$env")\",\"source\":\"$(esc 
 body="$body}"
 
 tmp=$(mktemp 2>/dev/null || echo "/tmp/kt-seo-check.$$")
-code=$(curl -sS -o "$tmp" -w '%{http_code}' --max-time 180 \
+code=$(curl -sS -o "$tmp" -w '%{http_code}' --max-time "${SEO_CHECK_TIMEOUT:-1200}" \
   -H "Authorization: Bearer $token" -H 'Content-Type: application/json' \
   -X POST --data "$body" "$url/check" 2>/dev/null)
 rc=$?
