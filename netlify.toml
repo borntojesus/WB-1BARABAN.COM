@@ -17,4 +17,4 @@
   pretty_urls = false
 
 # _headers and _redirects are generated into web/dist by the netlify_static
-# preset (cache headers, X-Robots-Tag noindex on /ask, 404 fallback).
+# preset (cache headers, /go/<slug> affiliate 302s, 404 fallback).

@@ -1,5 +1,8 @@
 // Google Tag Manager. GA4 (G-THSBBY8Y7C) loads only through this container, never by a
 // direct gtag.js tag, so it is not counted twice.
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { mockOperators } from "./data/operators";
+
 const GTM_ID = "GTM-KW7J287K";
 
 // Consent Mode v2 defaults, before the GTM loader: denied in the EEA, UK and Switzerland
@@ -91,7 +94,27 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       crawlLinks: true,
+      // /go/* are Netlify 302 redirects written into dist/_redirects, not pages
+      ignore: ["/go/"],
       routes: ["/compare", "/authors/anna-k", "/authors/marek-s"],
+    },
+  },
+
+  hooks: {
+    // Write /go/<slug> -> affiliate URL redirects from data/operators.ts into
+    // dist/_redirects, ahead of the preset's own rules (first match wins).
+    "nitro:init"(nitro) {
+      const body =
+        mockOperators.map((o) => `/go/${o.slug}  ${o.affiliateUrl}  302`).join("\n") + "\n";
+      nitro.hooks.hook("compiled", () => {
+        const out = nitro.options.output.publicDir;
+        mkdirSync(out, { recursive: true });
+        let existing = "";
+        try {
+          existing = readFileSync(`${out}/_redirects`, "utf8");
+        } catch {}
+        writeFileSync(`${out}/_redirects`, body + existing);
+      });
     },
   },
 
@@ -108,7 +131,7 @@ export default defineNuxtConfig({
     "/poker/**": { isr: 600 },
     "/slots/**": { isr: 600 },
     "/reviews/**": { isr: 3600 },
-    "/ask": { ssr: true, headers: { "X-Robots-Tag": "noindex" } },
+    "/ask": { ssr: true },
   },
 
   typescript: {

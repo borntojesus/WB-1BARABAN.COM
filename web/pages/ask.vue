@@ -50,7 +50,6 @@ watch(messages, () => scrollToBottom(), { deep: true })
 useSeoMeta({
   title: 'Concierge — ask anything about online gambling',
   description: 'AI concierge that searches our reviewed-operators database. Ask in plain English, get matched operators with citations.',
-  robots: 'noindex, nofollow',
 })
 </script>
 

@@ -14,7 +14,7 @@ cd web && pnpm install --frozen-lockfile && pnpm generate   # output: web/dist
 
 Expect 49 prerendered routes and `Total errors: 0` from the link checker.
 `/go/<slug>` redirects are written into `web/dist/_redirects` by a nitro hook in
-`nuxt.config.ts` (UKGC-licensed operators only); they are excluded from prerender
+`nuxt.config.ts` (every operator in `data/operators.ts`, to its `affiliateUrl`); they are excluded from prerender
 and the link checker.
 
 ## Deploy (prebuilt)
@@ -38,7 +38,7 @@ Remove the old Vercel records (A 76.76.21.21 / CNAME cname.vercel-dns.com).
 ## Verify
 
 `curl -sI https://1baraban.com/` 200, `/sitemap.xml`, `/robots.txt`, and
-`<meta name="robots" content="index, follow` on content pages (only `/ask` is noindex).
+`<meta name="robots" content="index, follow` on content pages (no page is noindex).
 
 ## Status
 
